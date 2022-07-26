@@ -13,8 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import za.ac.cput.recipesearcher.Activities.databinding.ActivityRegistrationBinding;
-
+import za.ac.cput.recipesearcher.Activities;
 import za.ac.cput.recipesearcher.R;
 import za.ac.cput.recipesearcher.databinding.ActivityRegistrationBinding;
 

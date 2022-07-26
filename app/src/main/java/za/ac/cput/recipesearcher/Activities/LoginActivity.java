@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import za.ac.cput.recipesearcher.Activities.databinding.ActivityLoginBinding;
 
 import za.ac.cput.recipesearcher.R;
+import za.ac.cput.recipesearcher.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
