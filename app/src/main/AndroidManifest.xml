@@ -8,17 +8,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RecipeSearcher">
-        <activity
-            android:name=".Activities.RegistrationActivity"
-            android:exported="false"
-            android:label="@string/title_activity_registration"
-            android:theme="@style/Theme.RecipeSearcher.NoActionBar" />
-        <activity
-            android:name=".Activities.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.RecipeSearcher.NoActionBar" />
-    </application>
+        android:theme="@style/Theme.RecipeSearcher"></application>
 
 </manifest>
