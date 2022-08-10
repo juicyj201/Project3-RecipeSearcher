@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_favourites_recipe_screen.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_login.xml" value="0.1539855072463768" />
+        <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_profile_edit_screen.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_recipe_screen.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_settings_screen.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>
