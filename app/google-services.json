@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "946408330776",
+    "project_id": "recipesearcher-6b2ab",
+    "storage_bucket": "recipesearcher-6b2ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946408330776:android:a1f8417b46187223a6556d",
+        "android_client_info": {
+          "package_name": "za.ac.cput.recipesearcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946408330776-eeadd9dnf3shr2snkfdekhhib56o8ndh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "za.ac.cput.recipesearcher",
+            "certificate_hash": "77d4cf777caf275ea89a2e072ad407e3ba808c2b"
+          }
+        },
+        {
+          "client_id": "946408330776-ee5sg8vfe202kvmh62ol3ci3o42ng4cs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx4gzK_vqMRO89OBKZSDQCmsP76GFlXTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946408330776-ee5sg8vfe202kvmh62ol3ci3o42ng4cs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
