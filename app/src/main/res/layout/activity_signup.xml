@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.">
+
+    <ImageView
+        android:id="@+id/zaGourmetLogo"
+        android:layout_width="183dp"
+        android:layout_height="125dp"
+        android:src="@drawable/signin_screen_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <EditText
+        android:id="@+id/edtPasswordConfirm"
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="53dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+
+        android:background="@drawable/custom_input"
+        android:paddingStart="15dp"
+
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/cbxConfirmNotifications"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="8dp"
+
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSurname" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="250sp"
+        android:height="35sp"
+        android:background="@drawable/btn_signin"
+        android:text="SIGN UP"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbxConfirmNotifications"
+        app:layout_constraintVertical_bias="0.177" />
+
+    <EditText
+        android:id="@+id/edtSurname"
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="2dp"
+
+        android:background="@drawable/custom_input"
+        android:ems="10"
+
+        android:hint="Surname"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
+
+    <CheckBox
+        android:id="@+id/cbxConfirmNotifications"
+        android:layout_width="238dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="88dp"
+        android:text="I want to receive notifications about \nrecipe tips, recommendation, etc."
+        android:textColor="@color/orange"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPasswordConfirm" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+
+        android:background="@drawable/custom_input"
+        android:paddingStart="15dp"
+
+        android:labelFor="@id/edtName"
+        app:layout_constraintBottom_toTopOf="@+id/edtPasswordConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="236dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+
+        android:hint="Name"
+        android:inputType="textPersonName"
+
+        android:paddingStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtSurname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zaGourmetLogo" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="345dp"
+        android:layout_marginBottom="660dp"
+        android:background="@drawable/btn_back_orange"
+        android:padding="13sp"
+        android:src="@drawable/icon_back_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

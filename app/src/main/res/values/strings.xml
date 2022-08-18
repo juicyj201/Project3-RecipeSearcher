@@ -1,13 +1,29 @@
 <resources>
     <string name="app_name">RecipeSearcher</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="back_button">Back</string>
+    <string name="za_gourmet_logo_name">This is the official logo for ZA Gourmet.</string>
+
+    <string name="sign_in">SIGN IN</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_up">Not a user? Sign up.</string>
+    <string name="twitter_icon">THis is the Twitter social media platform icon.</string>
+    <string name="instagram_icon">THis is the Instagram social media platform icon.</string>
+    <string name="facebook_icon">THis is the Facebook social media platform icon.</string>
+
+    <string name="recipe_instruction_placeholder_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industries standard dummy text ever since the 1500s, when an unknown printer took a galley of type and\n scrambled it to make a type specimen book.</string>
+    <string name="title_activity_avtivity_navbar">avtivity_navbar</string>
+    <string name="title_activity_recipe_screen" />
+    <string name="title_activity_home" />
+    <string name="title_activity_login_signin" />
+    <string name="title_activity_get_started_welcome2" />
+    <string name="title_activity_get_started_welcome1" />
+    <string name="title_activity_registration" />
+    <string name="title_activity_login" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

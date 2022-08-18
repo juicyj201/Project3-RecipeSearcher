@@ -10,50 +10,44 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecipeSearcher">
         <activity
-            android:name=".Activities.FavouritesRecipeScreen"
+            android:name=".Activities.ServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.RecipeScreen"
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.PrivacyPolicyScreen"
-            android:exported="false" />
+            android:name=".Activities.RecipeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recipe_screen" />
         <activity
-            android:name=".Activities.SettingsScreen"
-            android:exported="false" />
+            android:name=".Activities.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home" />
         <activity
-            android:name=".Activities.ProfileEditScreen"
-            android:exported="false" />
+            android:name=".Activities.GetStartedWelcome2Activity"
+            android:exported="false"
+            android:label="@string/title_activity_get_started_welcome2" />
         <activity
-            android:name=".Activities.SavedScreen"
-            android:exported="false" />
+            android:name=".Activities.GetStartedWelcome1Activity"
+            android:exported="false"
+            android:label="@string/title_activity_get_started_welcome1" />
         <activity
-            android:name=".Activities.FavouritesScreen"
-            android:exported="false" />
+            android:name=".Activities.SignupActivity"
+            android:exported="false"
+            android:label="@string/title_activity_registration" />
         <activity
-            android:name=".Activities.ProfileScreen"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.HomeScreenNavActivated"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.HomeScreen"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.SignUpScreen"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.SignInScreen"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.SignInSignUpScreen"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.GetStartedScreen2"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.GetStartedScreen"
-            android:exported="false" />
+            android:name=".Activities.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
     </application>
 
 </manifest>
