@@ -7,16 +7,22 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import za.ac.cput.recipesearcher.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnSignIn;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //setting up firebase authentication
+        mAuth = FirebaseAuth.getInstance();
 
         //Initialize button
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
@@ -25,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //login user from google firebase previous json records
+
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
         });

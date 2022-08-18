@@ -26,6 +26,8 @@ public class SignupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //create new user with google firebase in json storage
+
                 startActivity(new Intent(SignupActivity.this, HomeActivity.class));
             }
         });
