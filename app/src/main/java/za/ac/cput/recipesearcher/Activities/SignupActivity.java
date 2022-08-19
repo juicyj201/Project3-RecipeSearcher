@@ -18,13 +18,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import za.ac.cput.recipesearcher.Entities.User;
 import za.ac.cput.recipesearcher.R;
+import za.ac.cput.recipesearcher.Repository.Impl.UserRepositoryImpl;
+import za.ac.cput.recipesearcher.Repository.UserRepository;
 
 public class SignupActivity extends AppCompatActivity {
 
     private Button btnSignUp;
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private final UserRepository repo = new UserRepositoryImpl();
+    private final String firstname = findViewById(R.id.edtName).toString();
+    private final String surname = findViewById(R.id.edtSurname).toString();
+    private final String email = findViewById(R.id.edtEmail).toString();
+    private final String password = findViewById(R.id.edtPassword).toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +50,6 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //create new user with google firebase in json storage
-                final String email = findViewById(R.id.edtEmail).toString();
-                final String password = findViewById(R.id.edtPassword).toString();
 
                 if(!email.equals(null) && !password.equals(null)){
                     signUp(email, password);
@@ -61,6 +67,7 @@ public class SignupActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Log.d(TAG, "createUserWithEmail:success");
                             user = auth.getCurrentUser();
+                            saveOtherUserInfo();
                             startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                         } else {
                             //Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -71,6 +78,11 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void saveOtherUserInfo(){
+        repo.save(new User.UserBuilder().createID().createFullName(firstname, surname).createEmail(email).createCondition("none").build());
+        //TODO add condition information for user
     }
 
 }
