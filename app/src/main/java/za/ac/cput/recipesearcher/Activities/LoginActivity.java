@@ -17,7 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import za.ac.cput.recipesearcher.Entities.User;
 import za.ac.cput.recipesearcher.R;
+import za.ac.cput.recipesearcher.Repository.Impl.UserRepositoryImpl;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser userAlreadySignedIn;
     private FirebaseUser userSigningIn;
+    private final UserRepositoryImpl repo = new UserRepositoryImpl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
