@@ -7,6 +7,6 @@ import za.ac.cput.recipesearcher.Entities.User;
 
 public interface UserRepository extends IRepository<User, String>{
     public User save(User user);
+    public User read(User user);
     public List<User> readAll();
-    public Optional<User> update(User user);
 }

@@ -69,6 +69,8 @@ public class User {
                 '}';
     }
 
+
+
     public static class UserBuilder{
         private static String id;
         private static String username;
