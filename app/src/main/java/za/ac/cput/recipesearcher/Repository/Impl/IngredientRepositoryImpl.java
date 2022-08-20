@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import za.ac.cput.recipesearcher.Entities.Ingredient;
-import za.ac.cput.recipesearcher.Entities.User;
 import za.ac.cput.recipesearcher.Repository.IngredientRepository;
 
 public class IngredientRepositoryImpl implements IngredientRepository {
@@ -36,7 +35,7 @@ public class IngredientRepositoryImpl implements IngredientRepository {
         Task<DataSnapshot> task = ingredientrepo.get();
         Ingredient dbIngre = null;
         while(task.getResult().exists()) {
-            if (task.getResult().getValue(User.class).equals(ingredient)) {
+            if (task.getResult().getValue(Ingredient.class).equals(ingredient)) {
                 dbIngre = task.getResult().getValue(Ingredient.class);
             }
         }

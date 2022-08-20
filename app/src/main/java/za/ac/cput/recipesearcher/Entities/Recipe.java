@@ -1,23 +1,36 @@
 package za.ac.cput.recipesearcher.Entities;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import za.ac.cput.recipesearcher.Entities.Util.CalorieCalculations;
 
 public class Recipe {
     private String recipeName;
     private String recipeBio;
     private String estimatedTime;
-    //calories needs a seperate calculation for food
     private List<Ingredient> ingredients;
+    //entire segment for calorie calclulations
+    private CalorieCalculations calorieCalc;
     private int calories;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public Recipe(RecipeBuilder recipeBuilder){
         this.recipeName = recipeBuilder.recipeName;
         this.recipeBio = recipeBuilder.recipeBio;
         this.estimatedTime = recipeBuilder.estimatedTime;
         this.ingredients = recipeBuilder.ingredients;
         this.calories = recipeBuilder.calories;
+
+        //creating an instance for calorie calculations and ingredient array occurence
+        Ingredient[] array = ingredients.stream().toArray(Ingredient[]::new);
+        //since there is a variable amount of ingredients in the ingredient list we have to enter an array, or one or multiple values
+        this.calorieCalc = new CalorieCalculations(array);
     }
 
     public String getRecipeName() {
@@ -37,6 +50,8 @@ public class Recipe {
     }
 
     public int getCalories() {
+        calories = calorieCalc.getTotalCalories();
+
         return calories;
     }
 
@@ -50,7 +65,7 @@ public class Recipe {
 
     @Override
     public int hashCode() {
-        return Objects.hash(recipeName, recipeBio, estimatedTime, calories);
+        return Objects.hash(recipeName, recipeBio, estimatedTime, calorieCalc);
     }
 
     @Override
@@ -59,7 +74,7 @@ public class Recipe {
                 "recipeName='" + recipeName + '\'' +
                 ", recipeBio='" + recipeBio + '\'' +
                 ", estimatedTime='" + estimatedTime + '\'' +
-                ", calories='" + calories + '\'' +
+                ", calories='" + calorieCalc + '\'' +
                 '}';
     }
 
@@ -105,11 +120,7 @@ public class Recipe {
             return this;
         }
 
-        public RecipeBuilder createCalories(int calories){
-            this.calories = calories;
-            return this;
-        }
-
+        @RequiresApi(api = Build.VERSION_CODES.N)
         public Recipe Build(){
             return new Recipe(this);
         }
