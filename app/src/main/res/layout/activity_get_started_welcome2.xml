@@ -11,9 +11,11 @@
         android:id="@+id/img_welcomescreen_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/get_started_screen__2"
+        android:src="@drawable/get_started_screen__2_1"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

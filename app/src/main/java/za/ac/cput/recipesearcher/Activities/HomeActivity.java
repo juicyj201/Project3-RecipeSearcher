@@ -2,6 +2,9 @@ package za.ac.cput.recipesearcher.Activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
@@ -9,7 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
+import za.ac.cput.recipesearcher.Activities.FoodCategory.FoodCategoryAdapter;
+import za.ac.cput.recipesearcher.Activities.FoodCategory.FoodCategoryModel;
 import za.ac.cput.recipesearcher.MainActivity;
 import za.ac.cput.recipesearcher.R;
 

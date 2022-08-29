@@ -34,15 +34,16 @@ android {
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+//    implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.5.1'
     implementation 'androidx.navigation:navigation-ui:2.5.1'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'com.google.firebase:firebase-auth:21.0.7'
-    implementation 'com.google.firebase:firebase-database:20.0.5'
+//    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+//    implementation 'com.google.android.ads:mediation-test-suite:3.0.0'
+//    implementation 'com.google.firebase:firebase-auth:21.0.7'
+//    implementation 'com.google.firebase:firebase-database:20.0.5'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.4.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.0'

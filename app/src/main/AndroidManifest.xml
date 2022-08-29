@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecipeSearcher">
         <activity
-            android:name=".Activities.ServiceActivity"
+            android:name=".Activities.PrivacyPolicy"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.EditProfile"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -21,9 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.ProfileActivity"
-            android:exported="false" />
         <activity
             android:name=".Activities.RecipeActivity"
             android:exported="false"
@@ -48,6 +51,10 @@
             android:name=".Activities.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

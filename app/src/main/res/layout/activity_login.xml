@@ -6,26 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Activities.LoginActivity">
-
-    <ImageButton
-        android:id="@+id/imgbtn_back"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="345dp"
-        android:layout_marginBottom="662dp"
-        android:background="@drawable/btn_back_orange"
-        android:padding="13sp"
-        android:contentDescription="@string/back_button"
-        android:src="@drawable/icon_back_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/img_za_logo"
         android:layout_width="165dp"
         android:layout_height="137dp"
         android:layout_marginTop="95dp"
@@ -45,7 +27,6 @@
         android:layout_marginBottom="8dp"
         android:autofillHints="emailAddress"
         android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_email"
 
         android:gravity="center_vertical"
 
@@ -54,7 +35,7 @@
         android:ems="10"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
+        android:padding="15dp"
 
         android:textColor="@color/darkGray"
         android:textSize="14sp"
@@ -70,7 +51,6 @@
         android:layout_marginTop="10dp"
         android:autofillHints="password"
         android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_lock"
 
         android:gravity="center_vertical"
 
@@ -79,8 +59,8 @@
         android:hint="@string/password"
         android:inputType="textPassword"
 
-        android:padding="10dp"
-        android:textColor="@color/darkGray"
+        android:padding="15dp"
+        android:textColor="@color/orange"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

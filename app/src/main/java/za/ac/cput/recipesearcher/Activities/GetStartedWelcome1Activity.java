@@ -37,7 +37,7 @@ public class GetStartedWelcome1Activity extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GetStartedWelcome1Activity.this, HomeActivity.class));
+                startActivity(new Intent(GetStartedWelcome1Activity.this, LoginActivity.class));
             }
         });
 
