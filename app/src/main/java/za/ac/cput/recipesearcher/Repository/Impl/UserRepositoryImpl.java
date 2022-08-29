@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ import za.ac.cput.recipesearcher.Repository.UserRepository;
 public class UserRepositoryImpl implements UserRepository {
     private FirebaseDatabase db;
     private DatabaseReference userrepo;
+    private Task<DataSnapshot> task;
 
     public UserRepositoryImpl(){
         db = FirebaseDatabase.getInstance();
@@ -39,15 +41,28 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
     }
 
+    @Override
+    public User read(User user) {
+        Task<DataSnapshot> task = userrepo.get();
+        User dbUser = null;
+        while(task.getResult().exists()) {
+            if (task.getResult().getValue(User.class).equals(user)) {
+                dbUser = task.getResult().getValue(User.class);
+            }
+        }
+
+        return dbUser;
+    }
+
 
     @Override
     public List<User> readAll() {
-        return null;
-    }
+        Task<DataSnapshot> task = userrepo.get();
+        List<User> userList = new ArrayList<>();
+        while(task.getResult().exists()) {
+            userList.add(task.getResult().getValue(User.class));
+        }
 
-    @Override
-    public Optional<User> update(User user) {
-        return null;
-        //return Optional.empty();
+        return userList;
     }
 }
