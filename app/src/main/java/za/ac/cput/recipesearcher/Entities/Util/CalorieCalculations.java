@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import za.ac.cput.recipesearcher.Entities.Ingredient;
-import za.ac.cput.recipesearcher.Entities.Recipe;
+//import za.ac.cput.recipesearcher.Entities.Recipe;
 
 public class CalorieCalculations {
     private final int caloriesPerGramProtein = 4;

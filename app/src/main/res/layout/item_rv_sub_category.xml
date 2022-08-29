@@ -7,7 +7,6 @@
     android:layout_height="wrap_content"
     tools:context=".Activities.HomeActivity">
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="180dp"
         android:layout_height="260dp"
@@ -82,21 +81,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:gravity="right">
 
                 <ImageView
+                    android:id="@+id/img_amountofcalories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/kcal" />
+
                 <TextView
+                    android:id="@+id/txt_amountofcalories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="5dp"
                     android:text="#Calories"
-                    android:textSize="7dp"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="7dp" />
             </LinearLayout>
 
         </RelativeLayout>

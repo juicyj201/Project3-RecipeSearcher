@@ -3,21 +3,12 @@ package za.ac.cput.recipesearcher.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import za.ac.cput.recipesearcher.R;
-import za.ac.cput.recipesearcher.databinding.ActivityGetStartedWelcome2Binding;
 
 public class GetStartedWelcome2Activity extends AppCompatActivity {
 

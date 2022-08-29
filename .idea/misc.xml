@@ -3,6 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/drawable/btn_back_orange.xml" value="0.223" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/drawable/search_bg.xml" value="0.298" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_edit_profile.xml" value="0.2696629213483146" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_get_started_welcome1.xml" value="0.25" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_get_started_welcome2.xml" value="0.25" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_home.xml" value="0.25811965811965815" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_login_signin.xml" value="0.3359375" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_privacy_policy.xml" value="0.29635416666666664" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_profile.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_recipe_screen.xml" value="0.3359375" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_service.xml" value="0.2341880341880342" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_settings.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/activity_signup.xml" value="0.2341880341880342" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/fragment_favourites.xml" value="0.3359375" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/fragment_home_test.xml" value="0.2341880341880342" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/item_rv_main_category.xml" value="0.67" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/item_rv_main_category_favourites.xml" value="0.23076923076923078" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/item_rv_sub_category.xml" value="0.1" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/layout/item_rv_sub_category_favourites.xml" value="0.5" />
+        <entry key="..\:/Users/D E L R O N/StudioProjects/Project3-RecipeSearcher/app/src/main/res/menu/menu.xml" value="0.2341880341880342" />
         <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_favourites_recipe_screen.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_login.xml" value="0.1539855072463768" />
         <entry key="..\:/Users/joshu/AndroidStudioProjects/RecipeSearcher/app/src/main/res/layout/activity_profile_edit_screen.xml" value="0.11614583333333334" />
@@ -31,5 +55,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>
