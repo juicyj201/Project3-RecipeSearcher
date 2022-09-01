@@ -1,25 +1,10 @@
 # Project3-RecipeSearcher
 The recipe searcher application for Project 3
 
-## Task allocation
+##Recipe Searcher
+###'The only mobile app to to suit your healthy eating habits'
 
-Delron:
-- User Profile Pages
+This application allows a user to search for certain recipes, that are focused on lower calorie and lower cholesterol filled foods.
+The data is organised and tailored to your profile and gives good alternative recipes for those who have high-blood pressure.
 
-Matthew:
-- Favourites Pages
-- Saved Items Pages
-- Settings Pages
-- Get Started Pages
-
-Keziah:
-- Home Screen Pages
-- Navigation
-- Search Pages
-- Database Implementation
-
-Joshua:
-- Login/Sign-in Pages
-- Registration/Sign-up Pages
-- Policy Pages
-- Database Implementation
+Thank you for using this app!
