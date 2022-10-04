@@ -1,6 +1,6 @@
 package za.ac.cput.recipesearcher.Activities.FoodCategory;
 
-public class FoodCategoryModel {
+public class  FoodCategoryModel {
 
     Integer images;
     String categoryName;

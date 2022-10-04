@@ -6,11 +6,7 @@ public class Ingredient {
     private String ingredientName;
     //--all possible quantities
     //mililitres
-    private int ingredientQuantityML;
-    //grams
-    private int ingredientQauntityG;
-    //cups
-    private int ingredientQuantityC;
+    private String ingredientQuantity;
     //liquid or powder, etc.
     private String ingredientType;
 
@@ -18,9 +14,7 @@ public class Ingredient {
 
     public Ingredient(IngredientBuilder ingredientBuilder) {
         this.ingredientName = ingredientBuilder.ingredientName;
-        this.ingredientQuantityML = ingredientBuilder.ingredientQuantityML;
-        this.ingredientQauntityG = ingredientBuilder.ingredientQuantityG;
-        this.ingredientQuantityC = ingredientBuilder.ingredientQuantityC;
+        this.ingredientQuantity = ingredientBuilder.ingredientQuantity;
         this.ingredientType = ingredientBuilder.ingredientType;
         this.macros = ingredientBuilder.macros;
     }
@@ -29,16 +23,8 @@ public class Ingredient {
         return ingredientName;
     }
 
-    public int getIngredientQuantityML() {
-        return ingredientQuantityML;
-    }
-
-    public int getIngredientQauntityG() {
-        return ingredientQauntityG;
-    }
-
-    public int getIngredientQuantityC() {
-        return ingredientQuantityC;
+    public String getIngredientQuantity() {
+        return ingredientQuantity;
     }
 
     public String getIngredientType() {
@@ -51,17 +37,13 @@ public class Ingredient {
 
     public static class IngredientBuilder{
         public static String ingredientName;
-        public static int ingredientQuantityML;
-        public static int ingredientQuantityG;
-        public static int ingredientQuantityC;
+        public static String ingredientQuantity;
         public static String ingredientType;
         private static Macros macros;
 
-        public IngredientBuilder(String ingredientName, int ingredientQuantityML, int ingredientQuantityG, int ingredientQuantityC, String ingredientType, Macros macros) {
+        public IngredientBuilder(String ingredientName, String ingredientQuantity, String ingredientType, Macros macros) {
             this.ingredientName = ingredientName;
-            this.ingredientQuantityML = ingredientQuantityML;
-            this.ingredientQuantityG = ingredientQuantityG;
-            this.ingredientQuantityC = ingredientQuantityC;
+            this.ingredientQuantity = ingredientQuantity;
             this.ingredientType = ingredientType;
             this.macros = macros;
         }
