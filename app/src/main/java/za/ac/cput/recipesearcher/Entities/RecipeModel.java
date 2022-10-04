@@ -15,10 +15,11 @@
 //import android.widget.TextView;
 //
 //public class RecipeModel {
-//
+//	  
+//    Name is primary key for recipe db
+//	  String recipeName;
 //    int recipeImage;
 //    String recipeCategory;
-//    String recipeName;
 //    String recipeRating;
 //    String recipeCookingTime;
 //    String recipeAmountOfServings;
