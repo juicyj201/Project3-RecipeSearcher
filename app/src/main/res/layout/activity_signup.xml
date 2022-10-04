@@ -86,6 +86,7 @@
         android:background="@drawable/custom_input"
         android:ems="10"
 
+        android:enabled="true"
         android:hint="Surname"
         android:inputType="textPersonName"
         android:paddingStart="15dp"
@@ -99,12 +100,13 @@
         android:layout_width="238dp"
         android:layout_height="35dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="88dp"
         android:text="I want to receive notifications about \nrecipe tips, recommendation, etc."
         android:textColor="@color/orange"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPasswordConfirm" />
 

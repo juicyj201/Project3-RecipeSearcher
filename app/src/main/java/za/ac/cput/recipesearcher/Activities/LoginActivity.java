@@ -1,7 +1,10 @@
 package za.ac.cput.recipesearcher.Activities;
 
+import static java.lang.String.format;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,14 +19,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Pattern;
+
 import za.ac.cput.recipesearcher.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnSignIn;
+    private Button btnSignUp;
     private FirebaseAuth auth;
     private FirebaseUser userAlreadySignedIn;
     private FirebaseUser userSigningIn;
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initialize button
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        btnSignUp = (Button) findViewById(R.id.btnSignUp2);
 
         //Button onclick
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -43,21 +51,31 @@ public class LoginActivity extends AppCompatActivity {
                 final String email = findViewById(R.id.edtEmailAddress).toString();
                 final String password = findViewById(R.id.editTextTextPassword).toString();
 
-                if(!email.equals(null) && !password.equals(null)){
-                    //validate and sign in the user with google verification
+                if(regexValidation(email, password)){
+                    String message = "Email: "+email+", Password: "+password;
+                    Log.i(TAG, message);
                     signIn(email, password);
                 }
             }
         });
 
         //Button onclicks
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
+    }
 
+    private boolean regexValidation(String e, String pass){
+        boolean ematch = Pattern.matches("^[a-zA-Z0-9 ]+@[a-zA-Z]+\\.[a-zA-Z]+$", e);
+        boolean pmatch = Pattern.matches("^[a-zA-Z0-9_ ]{0,10}$", pass);
+        if (ematch && pmatch){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private void signIn(String email, String password){
@@ -71,8 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
                             //Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
 
                             //TODO error activity or toast will be implementted
                         }
@@ -80,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    /**
     @Override
     protected void onStart() {
         super.onStart();
@@ -101,4 +119,5 @@ public class LoginActivity extends AppCompatActivity {
         //final TextView passwordUpdateText = (TextView) findViewById(R.id.editTextTextPassword);
         //passwordUpdateText.setText(user.getPassword());
     }
+    **/
 }
