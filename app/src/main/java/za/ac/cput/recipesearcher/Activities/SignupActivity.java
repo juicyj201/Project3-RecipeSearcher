@@ -30,36 +30,39 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
-
    private Button btnSignUp;
    private FirebaseAuth auth;
    private FirebaseUser user;
-   private final String firstname = findViewById(R.id.edtName).toString();
-   private final String surname = findViewById(R.id.edtSurname).toString();
-   private final String email = findViewById(R.id.edtEmail).toString();
-   private final String password = findViewById(R.id.edtPassword).toString();
 
-   private static final String TAG = "RecipeActivity";
+   //TODO - Create profile-type object that saves the first name and surname to the profile
+
+   private static final String TAG = "SignUpActivity";
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_login);
+       setContentView(R.layout.activity_signup);
 
        //setting up authentication
        auth = FirebaseAuth.getInstance();
 
        //Initialize button
-       btnSignUp = (Button) findViewById(R.id.btnSignIn);
+       btnSignUp = (Button) findViewById(R.id.btnSignUp);
+       
+       
 
        //Button onclicks
        btnSignUp.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               final String firstname = findViewById(R.id.edtName).toString();
+               final String surname = findViewById(R.id.edtSurname).toString();
+               final String email = findViewById(R.id.edtEmail).toString();
+               final String password = findViewById(R.id.edtPassword).toString();
+
                //create new user with google firebase in json storage
                //validation will use regex
-               /**if(regexValidation(email, password)){signUp(email, password);}**/
-               if(!email.equals(null) && !password.equals(null)){
+               if(regexValidation(email, password)){
                    signUp(email, password);
                }
            }
@@ -67,8 +70,8 @@ public class SignupActivity extends AppCompatActivity {
    }
 
    private boolean regexValidation(String e, String pass){
-       //not working yet :(
-       boolean ematch = Pattern.matches("^[\\w+]@[\\w+][.][\\w+]$", e);
+       boolean ematch = Pattern.matches("^[a-zA-Z0-9 ]+@[a-zA-Z]+\\.[a-zA-Z]+$", e);
+       //boolean pmatch = Pattern.matches("^[a-zA-Z0-9_ ]{0,10}$", pass);
        if (ematch){
            return true;
        }else{
