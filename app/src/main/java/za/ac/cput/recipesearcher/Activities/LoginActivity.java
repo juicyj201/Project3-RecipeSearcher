@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import za.ac.cput.recipesearcher.R;
@@ -28,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnSignIn;
     private Button btnSignUp;
     private FirebaseAuth auth;
-    private FirebaseUser userAlreadySignedIn;
-    private FirebaseUser userSigningIn;
     private static final String TAG = "LoginActivity";
 
     @Override
@@ -48,18 +48,20 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = findViewById(R.id.edtEmailAddress).toString();
-                final String password = findViewById(R.id.editTextTextPassword).toString();
+                final EditText em = (EditText) findViewById(R.id.edtEmailAddress);
+                final EditText pass = (EditText) findViewById(R.id.editTextTextPassword);
+
+                String email = em.getText().toString();
+                String password = pass.getText().toString();
 
                 if(regexValidation(email, password)){
-                    String message = "Email: "+email+", Password: "+password;
-                    Log.i(TAG, message);
                     signIn(email, password);
+                }else{
+                    Toast.makeText( LoginActivity.this, "The user input is not correct.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        //Button onclicks
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,9 +71,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean regexValidation(String e, String pass){
-        boolean ematch = Pattern.matches("^[a-zA-Z0-9 ]+@[a-zA-Z]+\\.[a-zA-Z]+$", e);
-        boolean pmatch = Pattern.matches("^[a-zA-Z0-9_ ]{0,10}$", pass);
-        if (ematch && pmatch){
+        Pattern reemail = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]+$", Pattern.CASE_INSENSITIVE);
+        Pattern repass = Pattern.compile("^[A-Z0-9._%+-]{0,8}$", Pattern.CASE_INSENSITIVE);
+        Matcher emailm = reemail.matcher(e);
+        Matcher passm = repass.matcher(pass);
+        if (emailm.find() && passm.find()){
             return true;
         }else{
             return false;
@@ -84,13 +88,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //Log.d(TAG, "signInWithEmail:success");
-                            userSigningIn = auth.getCurrentUser();
+                            Toast.makeText(LoginActivity.this, "Sign in with JONG CENA, success.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
-                            //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            String e = String.valueOf(task.getException());
+                            Toast.makeText(LoginActivity.this, e, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "L + bozo + email = weak", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-
                             //TODO error activity or toast will be implementted
                         }
                     }
@@ -99,25 +103,18 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-
-        //get the user that is currently logging in
-        userAlreadySignedIn = auth.getCurrentUser();
-
-        //validate user
-        if(!userAlreadySignedIn.equals(null)) {
-            updateUserInfo(userAlreadySignedIn);
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser == null){
+            Toast.makeText(LoginActivity.this, "User is empty bruh \uD83D\uDC80", Toast.LENGTH_SHORT).show();
+        }if(currentUser != null){
+            EditText email = (EditText) findViewById(R.id.edtEmail);
+            EditText pass = (EditText) findViewById(R.id.edtPassword);
+            email.setText(currentUser.getEmail().toString());
+            pass.findFocus();
         }
-    }
-
-    private void updateUserInfo(FirebaseUser userAlreadySignedIn){
-        final TextView emailUpdateText = (TextView) findViewById(R.id.edtEmailAddress);
-        emailUpdateText.setText(userAlreadySignedIn.getEmail());
-        emailUpdateText.findFocus();
-        //TODO Cant seem to get this working properly - i will create a hotfix for this after sign in and signup attempts work
-        //final TextView passwordUpdateText = (TextView) findViewById(R.id.editTextTextPassword);
-        //passwordUpdateText.setText(user.getPassword());
     }
     **/
 }

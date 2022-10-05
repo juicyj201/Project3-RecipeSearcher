@@ -20,6 +20,7 @@ import za.ac.cput.recipesearcher.R;
 import za.ac.cput.recipesearcher.adapters.RVSubCategoryAdapter;
 
 public class ProfileFragment extends Fragment {
+    //TODO - add functionality for calling the user objects from the database using repository
 
     RecyclerView rvSub1Category;
     List<RVSubCategoryModel> rvSubCategory1List;
