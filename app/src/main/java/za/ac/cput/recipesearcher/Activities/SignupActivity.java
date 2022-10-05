@@ -6,10 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +23,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.w3c.dom.Text;
 
 import za.ac.cput.recipesearcher.Entities.Profile;
 import za.ac.cput.recipesearcher.R;
@@ -60,21 +65,23 @@ public class SignupActivity extends AppCompatActivity {
        btnSignUp.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               final String firstname = findViewById(R.id.edtName).toString();
-               final String surname = findViewById(R.id.edtSurname).toString();
-               final String email = findViewById(R.id.edtEmail).toString();
-               final String password = findViewById(R.id.edtPassword).toString();
+               final EditText fn = (EditText) findViewById(R.id.edtName);
+               final EditText sn = (EditText) findViewById(R.id.edtSurname);
+               final EditText em = (EditText) findViewById(R.id.edtEmail);
+               final EditText pass = (EditText) findViewById(R.id.edtPassword);
+
+               String email = em.getText().toString();
+               String password = pass.getText().toString();
+               String firstname = fn.getText().toString();
+               String surname = sn.getText().toString();
 
                //TODO - implement profile entity creation and saving the results of such object
-               //final Profile user = new Profile.ProfileBuilder().createName(firstname).createSurname(surname).createEmail(email).build();
-               //profilerepo.save(user);
+               final Profile user = new Profile.ProfileBuilder().createName(firstname).createSurname(surname).createEmail(email).build();
+               profilerepo.save(user);
 
                //create new user with google firebase in json storage
                //validation will use regex
-               /**if(regexValidation(email)){
-                   signUp(email, password);
-               }**/
-               if(!email.equals(null) && cbxNoties.isChecked()){
+               if(regexValidation(email, password) && cbxNoties.isChecked()){
                    signUp(email, password);
                }else{
                    Toast.makeText(SignupActivity.this, "The user input is not correct and cboxNoties has not been checked.", Toast.LENGTH_SHORT).show();
@@ -83,11 +90,12 @@ public class SignupActivity extends AppCompatActivity {
        });
    }
 
-   private boolean regexValidation(String e){
+   private boolean regexValidation(String e, String pass){
        Pattern reemail = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]+$", Pattern.CASE_INSENSITIVE);
+       Pattern repass = Pattern.compile("^[A-Z0-9._%+-]{0,8}$", Pattern.CASE_INSENSITIVE);
        Matcher emailm = reemail.matcher(e);
-       //boolean ematch = Pattern.matches("^[a-zA-Z0-9_ ]+@[a-zA-Z]+\\.[a-zA-Z]+$", e);
-       if (emailm.find()){
+       Matcher passm = repass.matcher(pass);
+       if (emailm.find() && passm.find()){
            return true;
        }else{
            return false;
@@ -99,15 +107,15 @@ public class SignupActivity extends AppCompatActivity {
                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                    @Override
                    public void onComplete(@NonNull Task<AuthResult> task) {
-                       Toast.makeText(SignupActivity.this, "This message has been brought to you by JONG CENA.", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(SignupActivity.this, "Sign up with JONG CENA, success.", Toast.LENGTH_SHORT).show();
 
                        if (task.isSuccessful()) {
-                           //Log.d(TAG, "createUserWithEmail:success");
                            Toast.makeText(SignupActivity.this, "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                        } else {
-                           //Log.e(TAG, "createUserWithEmail:failure", task.getException());
-                           Toast.makeText(SignupActivity.this, "createUserWithEmail:failure", Toast.LENGTH_SHORT).show();
+                           String e = String.valueOf(task.getException());
+                           Toast.makeText(SignupActivity.this, e, Toast.LENGTH_SHORT).show();
+                           Toast.makeText(SignupActivity.this, "L + bozo + email = weak", Toast.LENGTH_SHORT).show();
                            Toast.makeText(SignupActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                        }
                    }
