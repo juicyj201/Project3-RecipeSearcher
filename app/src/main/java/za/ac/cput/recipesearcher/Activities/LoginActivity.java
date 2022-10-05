@@ -51,10 +51,13 @@ public class LoginActivity extends AppCompatActivity {
                 final String email = findViewById(R.id.edtEmailAddress).toString();
                 final String password = findViewById(R.id.editTextTextPassword).toString();
 
+                /**
                 if(regexValidation(email, password)){
-                    String message = "Email: "+email+", Password: "+password;
-                    Log.i(TAG, message);
                     signIn(email, password);
+                }**/if(!email.equals(null) && !password.equals(null)){
+                    signIn(email, password);
+                }else{
+                    Toast.makeText( LoginActivity.this, "The user input is not correct.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -84,13 +87,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //Log.d(TAG, "signInWithEmail:success");
+                            Toast.makeText(LoginActivity.this, "Sign in with JONG CENA, success.", Toast.LENGTH_SHORT).show();
                             userSigningIn = auth.getCurrentUser();
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
                             //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "signInWithEmail:failure", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-
                             //TODO error activity or toast will be implementted
                         }
                     }
