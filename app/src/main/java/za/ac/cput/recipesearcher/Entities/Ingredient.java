@@ -4,12 +4,8 @@ import za.ac.cput.recipesearcher.Entities.Util.Macros;
 
 public class Ingredient {
     private String ingredientName;
-    //--all possible quantities
-    //mililitres
     private String ingredientQuantity;
-    //liquid or powder, etc.
     private String ingredientType;
-
     private Macros macros;
 
     public Ingredient(IngredientBuilder ingredientBuilder) {
