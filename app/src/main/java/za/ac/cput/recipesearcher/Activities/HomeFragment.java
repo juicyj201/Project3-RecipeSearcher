@@ -73,10 +73,14 @@ public class HomeFragment extends Fragment {
 
             rvSubCategory1List = new ArrayList<>();
 
-            repo.save(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+            //repo.save(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+            RVSubCategoryModel rv = new RVSubCategoryModel.RVSubCategoryModelBuilder().createName("Macaronni & Cheese").createBio("This recipe has been passed on by through generations.").createEstimatedTime("10min").createAmountOfCalories("200kcal").build();
+            repo.save(rv);
+
+            rvSubCategory1List.add(repo.read(rv));
 
             //Adding the data directly from the database
-            repo.read(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+            //repo.read(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
 
 //            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
 //            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal"));
@@ -96,7 +100,7 @@ public class HomeFragment extends Fragment {
 
             rvSubCategory2List = new ArrayList<>();
 
-            rvSubCategory2List.addAll(repo.readAll());
+            //rvSubCategory2List.add(repo.read(rv));
 
 //            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
 //            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal"));
