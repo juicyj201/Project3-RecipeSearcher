@@ -6,29 +6,31 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RecipeTest {
-    //Apologies for the unprofessional user object :|
-//    private final Recipe recipe = new Recipe.RecipeBuilder()
-//            .createRecipeName("French Toast")
-//            .createRecipeBio("(filler text)")
-//            .createEstimateTime("15 minutes")
-//            .createCalories()
-//            .build();
-//
-//    @Test
-//    void getRecipeName() {
-//        Assertions.assertFalse(user.getId().equals(null));
-//    }
+    private final RVSubCategoryModel recipe = new RVSubCategoryModel.RVSubCategoryModelBuilder()
+            .createName("French Toast")
+            .createBio("(filler text)")
+            .createEstimatedTime("15min")
+            .createAmountOfCalories("200cal")
+            .build();
+
+    @Test
+    void getRecipeName() {
+        Assertions.assertFalse(recipe.getRecipeName().equals(null));
+    }
 
     @Test
     void getRecipeBio() {
+        Assertions.assertFalse(recipe.getRecipeBio().equals(null));
     }
 
     @Test
     void getEstimatedTime() {
+        Assertions.assertFalse(recipe.getRecipeEstimatedTime().equals(null));
     }
 
     @Test
     void getCalories() {
+        Assertions.assertFalse(recipe.getRecipeAmountOfCalories().equals(null));
     }
 
     @Test

@@ -17,6 +17,14 @@ public class RVSubCategoryModel {
         this.recipeAmountOfCalories = recipeAmountOfCalories;
     }
 
+    public RVSubCategoryModel(RVSubCategoryModelBuilder builder){
+        this.recipeImage = builder.recipeImage;
+        this.recipeName = builder.recipeName;
+        this.recipeBio = builder.recipeBio;
+        this.recipeEstimatedTime = builder.recipeEstimatedTime;
+        this.recipeAmountOfCalories = builder.recipeAmountOfCalories;
+    }
+
     public int getRecipeImage() {
         return recipeImage;
     }
@@ -55,5 +63,50 @@ public class RVSubCategoryModel {
 
     public void setRecipeAmountOfCalories(String recipeAmountOfCalories) {
         this.recipeAmountOfCalories = recipeAmountOfCalories;
+    }
+
+    public static class RVSubCategoryModelBuilder {
+        public static int recipeImage;
+        public static String recipeName;
+        public static String recipeBio;
+        public static String recipeEstimatedTime;
+        public static String recipeAmountOfCalories;
+
+        public RVSubCategoryModelBuilder(){
+//            this.recipeImage = recipeImage;
+//            this.recipeName = recipeName;
+//            this.recipeBio = recipeBio;
+//            this.recipeEstimatedTime = recipeEstimatedTime;
+//            this.recipeAmountOfCalories = recipeAmountOfCalories;
+        }
+
+        public RVSubCategoryModelBuilder createImage(int recipeImage){
+            this.recipeImage = recipeImage;
+            return this;
+        }
+
+        public RVSubCategoryModelBuilder createName(String recipeName){
+            this.recipeName = recipeName;
+            return this;
+        }
+
+        public RVSubCategoryModelBuilder createBio(String recipeBio){
+            this.recipeBio = recipeBio;
+            return this;
+        }
+
+        public RVSubCategoryModelBuilder createEstimatedTime(String recipeEstimatedTime){
+            this.recipeEstimatedTime = recipeEstimatedTime;
+            return this;
+        }
+
+        public RVSubCategoryModelBuilder createAmountOfCalories(String recipeAmountOfCalories){
+            this.recipeAmountOfCalories = recipeAmountOfCalories;
+            return this;
+        }
+
+        public RVSubCategoryModel build(){
+            return new RVSubCategoryModel(this);
+        }
     }
 }
