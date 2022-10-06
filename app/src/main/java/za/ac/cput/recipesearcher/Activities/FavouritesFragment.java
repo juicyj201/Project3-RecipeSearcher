@@ -1,10 +1,7 @@
 package za.ac.cput.recipesearcher.Activities;
 
-import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,16 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import za.ac.cput.recipesearcher.Entities.RVMainCategoryModel;
 import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel;
 import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel_Favourites;
-import za.ac.cput.recipesearcher.Entities.RecipeModel;
 import za.ac.cput.recipesearcher.R;
 import za.ac.cput.recipesearcher.Repository.Impl.RecipeRepositoryImpl;
 import za.ac.cput.recipesearcher.adapters.RVMainCategoryAdapter;
@@ -30,8 +24,8 @@ import za.ac.cput.recipesearcher.adapters.RVSubCategoryAdapter_Favourites;
 public class FavouritesFragment extends Fragment {
     //testing recipe connection
     private RecipeRepositoryImpl repo = new RecipeRepositoryImpl();
-    private RecipeModel recipe;
-    private List<RecipeModel> rlist = new ArrayList<>();
+    private RVSubCategoryModel recipe;
+    private List<RVSubCategoryModel> rlist = new ArrayList<RVSubCategoryModel>();
 
     RecyclerView rvMainCategory_favourites;
     RecyclerView rvSubCategory_favourites;
