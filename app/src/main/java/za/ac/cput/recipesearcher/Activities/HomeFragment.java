@@ -73,8 +73,10 @@ public class HomeFragment extends Fragment {
 
             rvSubCategory1List = new ArrayList<>();
 
+            repo.save(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+
             //Adding the data directly from the database
-            rvSubCategory1List.add(repo.read(new RVSubCategoryModel(700150, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal")));
+            repo.read(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
 
 //            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
 //            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal"));
@@ -116,7 +118,8 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                    if(regexChecker(search.toString())){
-                        Toast.makeText(act, "This is working as expected. The next function call will not.", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(act, "CAN WE GET MUCH HIGHER", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(act, "(SO HIGH)", Toast.LENGTH_SHORT).show();
 
 //                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //                            List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
