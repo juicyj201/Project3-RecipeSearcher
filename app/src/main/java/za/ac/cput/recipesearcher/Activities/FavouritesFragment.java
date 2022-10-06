@@ -1,7 +1,10 @@
 package za.ac.cput.recipesearcher.Activities;
 
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,17 +12,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import za.ac.cput.recipesearcher.Entities.RVMainCategoryModel;
+import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel;
 import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel_Favourites;
+import za.ac.cput.recipesearcher.Entities.RecipeModel;
 import za.ac.cput.recipesearcher.R;
+import za.ac.cput.recipesearcher.Repository.Impl.RecipeRepositoryImpl;
 import za.ac.cput.recipesearcher.adapters.RVMainCategoryAdapter;
 import za.ac.cput.recipesearcher.adapters.RVSubCategoryAdapter_Favourites;
 
 public class FavouritesFragment extends Fragment {
+    //testing recipe connection
+    private RecipeRepositoryImpl repo = new RecipeRepositoryImpl();
+    private RecipeModel recipe;
+    private List<RecipeModel> rlist = new ArrayList<>();
 
     RecyclerView rvMainCategory_favourites;
     RecyclerView rvSubCategory_favourites;
@@ -30,7 +42,7 @@ public class FavouritesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_favourites, container, false);
+        View view = inflater.inflate(R.layout.fragment_favourites, container, false);
 
         //Main Recipe Categories
         rvMainCategory_favourites = view.findViewById(R.id.rv_main_category_favourites);
@@ -68,6 +80,13 @@ public class FavouritesFragment extends Fragment {
         rvSubCategory_favourites.setNestedScrollingEnabled(true);
 
         rvSubCategory_favourites.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+
+        rvMainCategory_favourites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO - implement a sorting algorithm of some kind
+            }
+        });
 
         return view;
     }

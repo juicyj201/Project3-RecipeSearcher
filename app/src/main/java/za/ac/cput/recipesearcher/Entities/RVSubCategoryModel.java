@@ -7,6 +7,7 @@ public class RVSubCategoryModel {
     String recipeBio;
     String recipeEstimatedTime;
     String recipeAmountOfCalories;
+    //String recipeCategory - this needs to be added in the fragment functions
 
     public RVSubCategoryModel(int recipeImage, String recipeName, String recipeBio, String recipeEstimatedTime, String recipeAmountOfCalories) {
         this.recipeImage = recipeImage;

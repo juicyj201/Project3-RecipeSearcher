@@ -8,6 +8,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel;
 import za.ac.cput.recipesearcher.Entities.RecipeModel;
 import za.ac.cput.recipesearcher.Repository.RecipeRepository;
 
@@ -22,7 +23,7 @@ public class RecipeRepositoryImpl implements RecipeRepository {
     }
 
     @Override
-    public RecipeModel save(RecipeModel recipe) {
+    public RVSubCategoryModel save(RVSubCategoryModel recipe) {
         if(!recipe.equals(null)){
             reciperepo.child(recipe.getRecipeName()).setValue(recipe);
         }
@@ -31,12 +32,12 @@ public class RecipeRepositoryImpl implements RecipeRepository {
     }
 
     @Override
-    public RecipeModel read(RecipeModel recipe) {
-        Task<DataSnapshot> task = reciperepo.get();
-        RecipeModel dbRecipe = null;
-        while(task.getResult().exists()) {
-            if (task.getResult().getValue(RecipeModel.class).equals(recipe)) {
-                dbRecipe = task.getResult().getValue(RecipeModel.class);
+    public RVSubCategoryModel read(RVSubCategoryModel recipe) {
+        task = reciperepo.get();
+        RVSubCategoryModel dbRecipe = null;
+        if(task.isSuccessful()) {
+            if (task.getResult().getValue(RVSubCategoryModel.class).equals(recipe)) {
+                dbRecipe = task.getResult().getValue(RVSubCategoryModel.class);
             }
         }
 
@@ -44,11 +45,13 @@ public class RecipeRepositoryImpl implements RecipeRepository {
     }
 
     @Override
-    public List<RecipeModel> readAll() {
-        Task<DataSnapshot> task = reciperepo.get();
-        List<RecipeModel> recipeList = new ArrayList<>();
-        while(task.getResult().exists()) {
-            recipeList.add(task.getResult().getValue(RecipeModel.class));
+    public List<RVSubCategoryModel> readAll() {
+        task = reciperepo.get();
+        List<RVSubCategoryModel> recipeList = new ArrayList<>();
+        if(task.isSuccessful()) {
+            while(task.getResult().exists()){
+                recipeList.add(task.getResult().getValue(RVSubCategoryModel.class));
+            }
         }
 
         return recipeList;
