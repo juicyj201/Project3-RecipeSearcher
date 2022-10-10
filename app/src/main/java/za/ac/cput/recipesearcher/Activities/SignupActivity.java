@@ -58,7 +58,7 @@ public class SignupActivity extends AppCompatActivity {
 
        //Initialize button
        //btnSignUp = (Button) findViewById(R.id.btnSignUp);
-       btnSignUp = (Button) findViewById(R.id.testBtnSignUp);
+       btnSignUp = (Button) findViewById(R.id.btnRegister);
        cbxNoties = (CheckBox) findViewById(R.id.cbxConfirmNotifications);
 
        //Button onclicks

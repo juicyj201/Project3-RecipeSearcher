@@ -47,4 +47,5 @@ Nunc scelerisque viverra mauris in. Pellentesque habitant morbi tristique senect
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="share">Share</string>
     <string name="favourites">Favourites</string>
+    <string name="save">Save</string>
 </resources>

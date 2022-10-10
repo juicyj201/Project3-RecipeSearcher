@@ -1,16 +1,27 @@
 package za.ac.cput.recipesearcher.Activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +32,14 @@ import za.ac.cput.recipesearcher.adapters.RVSubCategoryAdapter;
 
 public class ProfileFragment extends Fragment {
     //TODO - add functionality for calling the user objects from the database using repository
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore fStore;
+    StorageReference storageReference;
 
     RecyclerView rvSub1Category;
     List<RVSubCategoryModel> rvSubCategory1List;
-    ImageView imgSettings;
+    ImageView imgSettings, profileImg;
+    TextView editProfile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,10 +48,12 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        //Initialize TextViews
+        //Makes settings image clickable
         imgSettings = view.findViewById(R.id.img_settings);
+        //Makes edit profile text clickable
+        editProfile = view.findViewById(R.id.txt_editprofile);
 
-        //Button Onclicks
+        //Settings onclick event
         imgSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +61,32 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //Edit profile onclick event
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplication(), EditProfile.class);
+                startActivity(intent);
+            }
+        });
+
+        //Allows every user to have their own profile image
+        StorageReference profileRef = storageReference.child("users/"+ firebaseAuth.getCurrentUser().getUid()+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImg);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Picasso.get().load(R.drawable.profile_pic);
+                Log.e("tag","User doesn't have a profile picture yet. Loaded local image.");
+            }
+        });
+
+
 
         //Sub Recipe Category 1
         rvSub1Category = view.findViewById(R.id.rv_sub_category1);
