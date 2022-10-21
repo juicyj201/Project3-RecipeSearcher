@@ -3,9 +3,9 @@ package za.ac.cput.recipesearcher.Entities;
 import java.util.Objects;
 
 public class Profile {
+    private String email;
     private String name;
     private String surname;
-    private String email;
 
     public Profile(ProfileBuilder builder) {
         this.name = builder.name;
@@ -13,8 +13,12 @@ public class Profile {
         this.email = builder.email;
     }
 
-    public Profile(){
+    public Profile(){}
 
+    public Profile(String email, String surname, String name) {
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
     }
 
     public String getName() {
