@@ -44,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
    private FirebaseAuth auth;
 
    //TODO - Create profile-type object that saves the first name and surname to the profile
-   private ProfileRepositoryImpl profilerepo = new ProfileRepositoryImpl();
+   private ProfileRepositoryImpl profilerepo;// = new ProfileRepositoryImpl();
 
    private static final String TAG = "SignUpActivity";
 

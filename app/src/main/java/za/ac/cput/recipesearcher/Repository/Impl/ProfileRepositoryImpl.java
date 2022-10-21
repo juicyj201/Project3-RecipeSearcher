@@ -16,9 +16,11 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     private DatabaseReference profilerepo;
     private Task<DataSnapshot> task;
 
-    public ProfileRepositoryImpl(){
-        db = FirebaseDatabase.getInstance();
-        profilerepo = db.getReference("user");
+    public ProfileRepositoryImpl(FirebaseDatabase db, DatabaseReference profilerepo){
+        this.db = db;
+        this.profilerepo = profilerepo;
+        //db = FirebaseDatabase.getInstance();
+        //profilerepo = db.getReference("user");
     }
 
     @Override
