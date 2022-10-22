@@ -153,52 +153,28 @@ public class HomeFragment extends Fragment {
 
             rvSub2Category.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-            rvMainCategory.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-                @Override
-                public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                    return false;
-                }
-
-                @Override
-                public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
-                }
-
-                @Override
-                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-                }
-            });
-
             //Sort by category
             rvMainCategory.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
                     Toast.makeText(act, "About to get the categories", Toast.LENGTH_SHORT).show();
 
-                    //so the onTouch method works but the others dont
-                    view.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
-                            for (RVSubCategoryModel m : rvSubCategory1List) {
-                                if (m.getCategory().equalsIgnoreCase(view.findViewById(R.id.txt_category_name).toString())) {
-                                    for (RVMainCategoryModel c : rvMainCategoryList) {
-                                        if (m.getCategory().equalsIgnoreCase(c.getCategoryName())) {
-                                            rvSubCategoryNewList.add(m);
-                                            Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                }//awee
-
+                    List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
+                    for (RVSubCategoryModel m : rvSubCategory1List) {
+                        if (m.getCategory().equalsIgnoreCase(view.findViewById(R.id.txt_category_name).toString())) {
+                            for (RVMainCategoryModel c : rvMainCategoryList) {
+                                if (m.getCategory().equalsIgnoreCase(c.getCategoryName())) {
+                                    rvSubCategoryNewList.add(m);
+                                    Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
                         }
-                    });
 
+                    }
+                    rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                    rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
 
                     return true;
                 }
