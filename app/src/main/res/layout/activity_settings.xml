@@ -39,6 +39,7 @@
             android:src="@drawable/icon_back_white" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_editprofile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="18dp"
@@ -62,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rockwell_regular"
-                        android:text="Language"
+                        android:text="Edit Profile"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                     <TextView
@@ -71,12 +72,13 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rockwell_regular"
                         android:gravity="end"
-                        android:text="English >"
+                        android:text=">"
                         android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_privacypolicy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="18dp"
@@ -100,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rockwell_regular"
-                        android:text="Privacy"
+                        android:text="Privacy Policy"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                     <TextView
@@ -115,46 +117,46 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="18dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="5dp">
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_margin="18dp"-->
+<!--            app:cardCornerRadius="20dp"-->
+<!--            app:cardElevation="5dp">-->
 
-            <LinearLayout
-                android:id="@+id/layout_notifications_location"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="20dp">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/layout_notifications_location"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="20dp">-->
 
-                <LinearLayout
-                    android:id="@+id/layout_notifications_location_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layout_notifications_location_details"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp">-->
 
-                    <Switch
-                        android:id="@+id/switch_notifications"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:paddingStart="10dp"
-                        android:text="Notifications"
-                        android:textSize="18sp" />
+<!--                    <Switch-->
+<!--                        android:id="@+id/switch_notifications"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:paddingStart="10dp"-->
+<!--                        android:text="Notifications"-->
+<!--                        android:textSize="18sp" />-->
 
-                    <Switch
-                        android:id="@+id/switch_Location"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="10dp"
-                        android:text="Location"
-                        android:textSize="18sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+<!--                    <Switch-->
+<!--                        android:id="@+id/switch_Location"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingStart="10dp"-->
+<!--                        android:text="Location"-->
+<!--                        android:textSize="18sp" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

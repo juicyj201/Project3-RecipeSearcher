@@ -60,7 +60,7 @@
 <!--                        android:contentDescription="@string/back_button"-->
 <!--                        android:padding="13dp"-->
 <!--                        android:src="@drawable/icon_back_white" />-->
-                    <ImageView
+                <ImageView
                         android:id="@+id/img_settings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

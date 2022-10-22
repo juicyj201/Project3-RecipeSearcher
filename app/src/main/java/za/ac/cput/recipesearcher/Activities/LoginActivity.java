@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,7 @@ import za.ac.cput.recipesearcher.Repository.Impl.ProfileRepositoryImpl;
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnSignIn;
-    private Button btnSignUp;
+    private TextView txtSignUp;
     private FirebaseAuth auth;
     private static final String TAG = "LoginActivity";
     private ProfileRepositoryImpl repo = new ProfileRepositoryImpl();
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initialize button
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
-        btnSignUp = (Button) findViewById(R.id.btnSignUp2);
+        txtSignUp = (TextView) findViewById(R.id.txtSignup);
 
         Log.i(TAG, "Obtaining user information...");
 
@@ -95,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));

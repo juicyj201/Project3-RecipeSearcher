@@ -6,61 +6,65 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Activities.LoginActivity">
+
     <ImageView
         android:id="@+id/img_za_logo"
         android:layout_width="165dp"
         android:layout_height="137dp"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="61dp"
         android:contentDescription="@string/za_gourmet_logo_name"
         app:layout_constraintBottom_toTopOf="@+id/edtEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/signin_screen_logo" />
 
     <EditText
         android:id="@+id/edtEmailAddress"
-        android:layout_width="236dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="64dp"
         android:autofillHints="emailAddress"
         android:background="@drawable/custom_input"
-
-        android:gravity="center_vertical"
 
         android:drawablePadding="6dp"
 
         android:ems="10"
+
+        android:gravity="center_vertical"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         android:padding="15dp"
 
         android:textColor="@color/darkGray"
+        android:textColorHint="@color/orange"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="236dp"
-        android:layout_height="54dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:autofillHints="password"
         android:background="@drawable/custom_input"
 
-        android:gravity="center_vertical"
-
         android:drawablePadding="6dp"
+
         android:ems="10"
+        android:gravity="center_vertical"
         android:hint="@string/password"
         android:inputType="textPassword"
 
         android:padding="15dp"
         android:textColor="@color/orange"
+        android:textColorHint="@color/orange"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -85,23 +89,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
-    <Button
-        android:id="@+id/btnSignUp2"
+    <TextView
+        android:id="@+id/txtSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="143dp"
         android:layout_marginEnd="143dp"
-        android:layout_marginBottom="40dp"
         android:backgroundTint="#FFFFFF"
-        android:padding="8dp"
+        android:padding="16dp"
         android:text="@string/sign_up"
         android:textAlignment="center"
         android:textColor="@color/orange"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/socialIcons" />
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_instagram"
+        app:layout_constraintVertical_bias="0.408" />
 
     <Button
         android:id="@+id/btnSignIn"
@@ -116,53 +121,51 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.201" />
+        app:layout_constraintVertical_bias="0.23" />
 
-    <LinearLayout
-        android:id="@+id/socialIcons"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignUp2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+    <ImageButton
+        android:id="@+id/imgbtn_twitter"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="36dp"
+        android:background="@color/white"
+        android:contentDescription="@string/twitter_icon"
+        android:src="@drawable/twitter"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_instagram"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_instagram"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/white"
+        android:contentDescription="@string/instagram_icon"
+        android:src="@drawable/instagram"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_facebook"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgbtn_twitter"
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.7" />
 
-        <ImageButton
-            android:id="@+id/imgbtn_twitter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="@color/white"
-            android:src="@drawable/twitter"
-            android:contentDescription="@string/twitter_icon"/>
+    <ImageButton
+        android:id="@+id/imgbtn_facebook"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/white"
 
-        <ImageButton
-            android:id="@+id/imgbtn_instagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingStart="50dp"
-            android:paddingEnd="0dp"
-            android:src="@drawable/instagram"
-            android:contentDescription="@string/instagram_icon"/>
-
-        <ImageButton
-            android:id="@+id/imgbtn_facebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:contentDescription="@string/facebook_icon"
-            android:paddingStart="54dp"
-            android:paddingEnd="0dp"
-            android:src="@drawable/facebook" />
-    </LinearLayout>
+        android:contentDescription="@string/facebook_icon"
+        android:src="@drawable/facebook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toEndOf="@+id/imgbtn_instagram"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
