@@ -7,11 +7,13 @@ public class RVSubCategoryModel {
     String recipeBio;
     String recipeEstimatedTime;
     String recipeAmountOfCalories;
-    //String recipeCategory - this needs to be added in the fragment functions
+    String category;
 
-    public RVSubCategoryModel(){}
+    public RVSubCategoryModel(){
+        //empty constructor
+    }
 
-    public RVSubCategoryModel(int recipeImage, String recipeName, String recipeBio, String recipeEstimatedTime, String recipeAmountOfCalories) {
+    public RVSubCategoryModel(int recipeImage, String recipeName, String recipeBio, String recipeEstimatedTime, String recipeAmountOfCalories, String category) {
         this.recipeImage = recipeImage;
         this.recipeName = recipeName;
         this.recipeBio = recipeBio;
@@ -65,6 +67,14 @@ public class RVSubCategoryModel {
 
     public void setRecipeAmountOfCalories(String recipeAmountOfCalories) {
         this.recipeAmountOfCalories = recipeAmountOfCalories;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public static class RVSubCategoryModelBuilder {

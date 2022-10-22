@@ -8,6 +8,10 @@ public class RVSubCategoryModel_Favourites {
     String recipeEstimatedTime;
     String recipeAmountOfCalories;
 
+    public RVSubCategoryModel_Favourites(){
+        //empty constructor
+    }
+
     public RVSubCategoryModel_Favourites(int recipeImage, String recipeName, String recipeBio, String recipeEstimatedTime, String recipeAmountOfCalories) {
         this.recipeImage = recipeImage;
         this.recipeName = recipeName;

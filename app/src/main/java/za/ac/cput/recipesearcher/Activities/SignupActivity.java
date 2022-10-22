@@ -61,8 +61,6 @@ public class SignupActivity extends AppCompatActivity {
        btnSignUp = (Button) findViewById(R.id.btnRegister);
        cbxNoties = (CheckBox) findViewById(R.id.cbxConfirmNotifications);
 
-       Log.i(TAG, "Saving the user...");
-
        //Button onclicks
        btnSignUp.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -79,7 +77,6 @@ public class SignupActivity extends AppCompatActivity {
 
                final Profile user = new Profile.ProfileBuilder().createName(firstname).createSurname(surname).createEmail(email).build();
                profilerepo.save(user);
-               Log.i(TAG, "The user has been saved...");
 
                //create new user with google firebase in json storage
                //validation will use regex
@@ -109,15 +106,15 @@ public class SignupActivity extends AppCompatActivity {
                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                    @Override
                    public void onComplete(@NonNull Task<AuthResult> task) {
-                       Toast.makeText(SignupActivity.this, "Sign up with JONG CENA, success.", Toast.LENGTH_SHORT).show();
-
                        if (task.isSuccessful()) {
-                           Toast.makeText(SignupActivity.this, "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(SignupActivity.this, "Sign up with JONG CENA, success.", Toast.LENGTH_SHORT).show();
+                           //Toast.makeText(SignupActivity.this, "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                        } else {
                            String e = String.valueOf(task.getException());
                            Toast.makeText(SignupActivity.this, e, Toast.LENGTH_SHORT).show();
-                           Toast.makeText(SignupActivity.this, "L + bozo + email = weak", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(SignupActivity.this, "AMOGUS", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(SignupActivity.this, "SUS", Toast.LENGTH_SHORT).show();
                            Toast.makeText(SignupActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                        }
                    }
