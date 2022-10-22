@@ -5,6 +5,10 @@ public class RVMainCategoryModel {
     int categoryIcon;
     String categoryName;
 
+    public RVMainCategoryModel(){
+        //empty constructor
+    }
+
     public RVMainCategoryModel(int categoryIcon, String categoryName) {
         this.categoryIcon = categoryIcon;
         this.categoryName = categoryName;

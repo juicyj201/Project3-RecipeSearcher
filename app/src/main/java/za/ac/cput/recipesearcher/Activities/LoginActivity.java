@@ -122,7 +122,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Sign in with JONG CENA, success.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+
+                            Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                            homeIntent.putExtra("email", email);
+                            startActivity(homeIntent);
+
+                            //startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
                             String e = String.valueOf(task.getException());
                             Log.i(TAG, e);
