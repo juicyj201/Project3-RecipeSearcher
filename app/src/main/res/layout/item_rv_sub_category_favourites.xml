@@ -51,7 +51,7 @@
                             android:padding="4dp"
                             android:text="@string/recipe_instruction_placeholder_text"
                             android:textColor="@color/white"
-                            android:textSize="10sp" />
+                            android:textSize="11sp" />
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

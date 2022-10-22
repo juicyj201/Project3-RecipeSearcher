@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.FavouritesFragment">
 
+    <TextView
+        android:id="@+id/txtFavourites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/rockwell_bold"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="10dp"
+        android:text="Favourites"
+        android:textColor="#FF5722"
+        android:textSize="20sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_category_favourites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtFavourites"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
+        android:orientation="horizontal"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_rv_main_category" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rv_main_category_favourites"
         android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rockwell_bold"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="10dp"
-                android:text="Favourites"
-                android:textColor="@color/orange"
-                android:textSize="20sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_main_category_favourites"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_rv_main_category" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_sub_category_favourites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_marginBottom="0dp"
+                android:paddingBottom="80dp"
                 android:orientation="horizontal"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_rv_sub_category_favourites" />
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-</FrameLayout>
+</RelativeLayout>

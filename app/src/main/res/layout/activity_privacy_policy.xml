@@ -6,35 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".Activities.PrivacyPolicy">
 
+    <ImageButton
+        android:id="@+id/imgbtn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/btn_back_orange"
+        android:contentDescription="@string/back_button"
+        android:padding="13dp"
+        android:src="@drawable/icon_back_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        android:textColor="@color/orange"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/sv_privatepolicy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/imgbtn_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/sv_privatepolicy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scrollbars="none"
+        android:layout_marginTop="80dp"
+        android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/imgbtn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/btn_back_orange"
-                android:contentDescription="@string/back_button"
-                android:padding="13dp"
-                android:src="@drawable/icon_back_white" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
             <TextView
                 android:id="@+id/txt_privacy_policy"
                 android:layout_width="match_parent"
@@ -43,6 +52,5 @@
                 android:text="@string/privacy_policy"
                 android:textSize="16sp"
                 android:padding="10dp"/>
-        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

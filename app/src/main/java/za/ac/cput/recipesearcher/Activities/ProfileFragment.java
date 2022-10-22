@@ -124,6 +124,17 @@ public class ProfileFragment extends Fragment {
         imgSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplication(), Settings.class);
+                intent.putExtra("email", email);
+                intent.putExtra("name", name);
+                startActivity(intent);
+            }
+        });
+
+        //Edit onclick event
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplication(), EditProfile.class);
                 intent.putExtra("email", email);
                 intent.putExtra("name", name);
