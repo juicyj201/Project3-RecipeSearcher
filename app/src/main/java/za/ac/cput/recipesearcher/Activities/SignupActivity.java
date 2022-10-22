@@ -44,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
    private FirebaseAuth auth;
 
    //TODO - Create profile-type object that saves the first name and surname to the profile
-   private ProfileRepositoryImpl profilerepo;// = new ProfileRepositoryImpl();
+   private ProfileRepositoryImpl profilerepo = new ProfileRepositoryImpl();
 
    private static final String TAG = "SignUpActivity";
 
@@ -61,6 +61,8 @@ public class SignupActivity extends AppCompatActivity {
        btnSignUp = (Button) findViewById(R.id.btnRegister);
        cbxNoties = (CheckBox) findViewById(R.id.cbxConfirmNotifications);
 
+       Log.i(TAG, "Saving the user...");
+
        //Button onclicks
        btnSignUp.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -75,9 +77,9 @@ public class SignupActivity extends AppCompatActivity {
                String firstname = fn.getText().toString();
                String surname = sn.getText().toString();
 
-               //TODO - implement profile entity creation and saving the results of such object
                final Profile user = new Profile.ProfileBuilder().createName(firstname).createSurname(surname).createEmail(email).build();
                profilerepo.save(user);
+               Log.i(TAG, "The user has been saved...");
 
                //create new user with google firebase in json storage
                //validation will use regex

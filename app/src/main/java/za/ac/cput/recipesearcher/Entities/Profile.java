@@ -60,7 +60,7 @@ public class Profile {
 
     @Override
     public String toString() {
-        return "ProfileRepository{" +
+        return "Profile{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
