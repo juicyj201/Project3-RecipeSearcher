@@ -207,10 +207,10 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Create editText for entering new email
-                EditText resetEmail = new EditText(v.getContext());
+                final EditText resetEmail = new EditText(v.getContext());
                 Log.d("tag", "Button Clicked!");
                 //Popup window
-                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
                 passwordResetDialog.setTitle("Reset Password?");
                 passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
                 passwordResetDialog.setView(resetEmail);
@@ -219,7 +219,7 @@ public class EditProfile extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //extract the email and send reset link
-
+                        
                         String mail = resetEmail.getText().toString();
                         firebaseAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -241,6 +241,7 @@ public class EditProfile extends AppCompatActivity {
                         //close dialog
                     }
                 });
+                passwordResetDialog.create().show();
             }
         });
     }

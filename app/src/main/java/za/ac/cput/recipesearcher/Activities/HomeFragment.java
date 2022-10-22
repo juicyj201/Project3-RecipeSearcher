@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for (DataSnapshot s : snapshot.getChildren()) {
                         RVSubCategoryModel r = s.getValue(RVSubCategoryModel.class);
-                        System.out.println(s.getValue().toString());
+                        //System.out.println(s.getValue().toString());
                         Log.i(TAG, s.getValue().toString());
                         r.setRecipeImage(R.drawable.pexels_pixabay_315755);
                         //here i read all the data into the two lists

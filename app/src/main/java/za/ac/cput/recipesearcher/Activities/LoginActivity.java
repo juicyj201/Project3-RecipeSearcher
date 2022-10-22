@@ -2,6 +2,7 @@ package za.ac.cput.recipesearcher.Activities;
 
 import static java.lang.String.format;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +40,7 @@ import za.ac.cput.recipesearcher.Repository.Impl.ProfileRepositoryImpl;
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnSignIn;
-    private TextView txtSignUp;
+    private TextView txtSignUp, txtForgotPassword;
     private FirebaseAuth auth;
     private static final String TAG = "LoginActivity";
     private ProfileRepositoryImpl repo = new ProfileRepositoryImpl();
@@ -52,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         //Initialize button
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         txtSignUp = (TextView) findViewById(R.id.txtSignup);
+        txtForgotPassword = (TextView) findViewById(R.id.txt_forgotpassword);
 
         Log.i(TAG, "Obtaining user information...");
 
@@ -71,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot s : snapshot.getChildren()) {
                             Profile p = s.getValue(Profile.class);
-                            System.out.println(s.getValue().toString());
+                            System.out.println(s.getValue());
                             Log.i(TAG, s.getValue().toString());
                             if (p.getEmail().equals(email)) {
                                 Log.i(TAG, "Least the emails work");
@@ -139,6 +144,48 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        txtForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Create editText for entering new email
+                final EditText resetEmail = new EditText(v.getContext());
+                Log.d("tag", "Button Clicked!");
+                //Popup window
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password?");
+                passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
+                passwordResetDialog.setView(resetEmail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //extract the email and send reset link
+
+                        String mail = resetEmail.getText().toString();
+                        auth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(LoginActivity.this, "Reset Link Send to Your Email.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this, "Error! Reset Link Not Sent. " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //close dialog
+                    }
+                });
+                passwordResetDialog.create().show();
+            }
+        });
     }
 
     /**

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
    private Button btnSignUp;
+   private ImageButton imgButtonBack;
    private CheckBox cbxNoties;
    private FirebaseAuth auth;
 
@@ -60,6 +62,7 @@ public class SignupActivity extends AppCompatActivity {
        //btnSignUp = (Button) findViewById(R.id.btnSignUp);
        btnSignUp = (Button) findViewById(R.id.btnRegister);
        cbxNoties = (CheckBox) findViewById(R.id.cbxConfirmNotifications);
+       imgButtonBack = (ImageButton) findViewById(R.id.imgbtn_back);
 
        //Button onclicks
        btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +88,14 @@ public class SignupActivity extends AppCompatActivity {
                }else{
                    Toast.makeText(SignupActivity.this, "The user input is not correct and cboxNoties has not been checked.", Toast.LENGTH_SHORT).show();
                }
+           }
+       });
+
+       imgButtonBack.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+               startActivity(intent);
            }
        });
    }

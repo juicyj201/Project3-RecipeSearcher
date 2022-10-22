@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rockwell_regular"
                 android:text="@string/privacy_policy"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:padding="10dp"/>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
