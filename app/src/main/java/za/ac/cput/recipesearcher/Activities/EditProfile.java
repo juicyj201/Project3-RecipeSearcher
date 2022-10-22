@@ -49,6 +49,7 @@ public class EditProfile extends AppCompatActivity {
 
     private FirebaseUser user;
     private String userId, email, name;
+    private Activity previousScreen;
     private TextView txtSaveData;
     private Button btnReset;
     private ImageButton btnBack;
@@ -197,7 +198,7 @@ public class EditProfile extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditProfile.this, ProfileFragment.class);
+                Intent intent = new Intent(EditProfile.this, Settings.class);
                 startActivity(intent);
             }
         });
