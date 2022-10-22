@@ -22,7 +22,7 @@ import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel;
 import za.ac.cput.recipesearcher.Repository.RecipeRepository;
 
 public class RecipeRepositoryImpl implements RecipeRepository {
-    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference("https://recipesearcher-6b2ab-default-rtdb.firebaseio.com");
+    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private ValueEventListener listener;
 
     public RecipeRepositoryImpl(){
@@ -33,7 +33,8 @@ public class RecipeRepositoryImpl implements RecipeRepository {
         if(!recipe.equals(null)){
             //ref.child("recipe").child(recipe.getRecipeName()).setValue(recipe);
             ref.child("recipe").child(recipe.getRecipeName()).setValue(recipe);
-            return ref.child("recipe").child(recipe.getRecipeName()).get().getResult().getValue(RVSubCategoryModel.class);
+            if(ref.child("recipe").child(recipe.getRecipeName()).get().isSuccessful())
+                ref.child("recipe").child(recipe.getRecipeName()).get().getResult();
         }
 
         return null;

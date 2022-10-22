@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,19 +17,28 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import za.ac.cput.recipesearcher.Entities.Profile;
 import za.ac.cput.recipesearcher.R;
+import za.ac.cput.recipesearcher.Repository.Impl.ProfileRepositoryImpl;
 
+@IgnoreExtraProperties
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnSignIn;
     private Button btnSignUp;
     private FirebaseAuth auth;
     private static final String TAG = "LoginActivity";
+    private ProfileRepositoryImpl repo = new ProfileRepositoryImpl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignUp = (Button) findViewById(R.id.btnSignUp2);
 
+        Log.i(TAG, "Obtaining user information...");
+
         //Button onclick
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +64,34 @@ public class LoginActivity extends AppCompatActivity {
                 String email = em.getText().toString();
                 String password = pass.getText().toString();
 
-                if(regexValidation(email, password)){
-                    signIn(email, password);
-                }else{
-                    Toast.makeText( LoginActivity.this, "The user input is not correct.", Toast.LENGTH_SHORT).show();
-                }
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("user");
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot s : snapshot.getChildren()) {
+                            Profile p = s.getValue(Profile.class);
+                            System.out.println(s.getValue().toString());
+                            Log.i(TAG, s.getValue().toString());
+                            if (p.getEmail().equals(email)) {
+                                Log.i(TAG, "Least the emails work");
+
+                                if (regexValidation(email, password)) {
+                                    signIn(email, password);
+                                    break;
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "The user input is not correct.", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Log.i(TAG, "That email does not work.");
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
@@ -92,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } else {
                             String e = String.valueOf(task.getException());
+                            Log.i(TAG, e);
                             Toast.makeText(LoginActivity.this, e, Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "L + bozo + email = weak", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
