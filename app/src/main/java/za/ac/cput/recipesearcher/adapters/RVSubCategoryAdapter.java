@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import za.ac.cput.recipesearcher.Entities.RVMainCategoryModel;
 import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel;
 import za.ac.cput.recipesearcher.R;
 
@@ -63,4 +65,5 @@ public class RVSubCategoryAdapter extends RecyclerView.Adapter<RVSubCategoryAdap
             txt_amount_of_calories = itemView.findViewById(R.id.txt_amountofcalories);
         }
     }
+
 }

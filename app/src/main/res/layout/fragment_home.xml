@@ -51,6 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="onClick"
                 android:orientation="horizontal"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_rv_main_category" />

@@ -6,19 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import za.ac.cput.recipesearcher.Entities.RVMainCategoryModel;
+import za.ac.cput.recipesearcher.MainActivity;
 import za.ac.cput.recipesearcher.R;
 
 public class RVMainCategoryAdapter extends RecyclerView.Adapter<RVMainCategoryAdapter.ViewHolder>{
 
     Context context;
     List<RVMainCategoryModel> list;
+    TextView name;
 
     public RVMainCategoryAdapter(Context context, List<RVMainCategoryModel> list) {
         this.context = context;
