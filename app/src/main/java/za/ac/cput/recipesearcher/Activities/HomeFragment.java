@@ -138,6 +138,7 @@ public class HomeFragment extends Fragment {
             rvSub2Category.setNestedScrollingEnabled(true);
             rvSub2Category.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
+            //sorting through the categories
             rvMainCategory.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                 @Override
                 public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
@@ -146,22 +147,29 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                    List<TextView> views = null;
+                    for(int i = 0; i < rv.getLayoutManager().getItemCount(); i++) {
+                        views.add((TextView) rv.getLayoutManager().getChildAt(i));
+                    }
+
 //                    TextView text = otherview.findViewById(R.id.txt_category_name);
 //                    String categoryname = text.getText().toString();
 //                    Toast.makeText(act, categoryname, Toast.LENGTH_SHORT).show();
 //                    Log.i(TAG, categoryname);
-//
-//                    List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
-//                    for (RVSubCategoryModel m : list) {
-//                        if (m.getCategory().equals(categoryname)) {
-//                            rvSubCategoryNewList.add(m);
-//                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-//                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-//                            Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
+
+                    List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
+                    for (RVSubCategoryModel m : list) {
+                        for(TextView texts : views) {
+                            if (m.getCategory().equals(texts.getText().toString())) {
+                                rvSubCategoryNewList.add(m);
+                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                                Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
                 }
 
                 @Override
@@ -175,21 +183,22 @@ public class HomeFragment extends Fragment {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   if(regexChecker(search.toString())) {
-                       Toast.makeText(act, "Zǎoshang hǎo zhōngguó", Toast.LENGTH_SHORT).show();
-                       Toast.makeText(act, "xiànzài wǒ yǒu BING CHILLING", Toast.LENGTH_SHORT).show();
-                       Toast.makeText(act, "wǒ hěn xǐhuān BING CHILLING", Toast.LENGTH_SHORT).show();
+                   if(regexChecker(search.getQuery().toString())) {
+                       Toast.makeText(act, "THE ONE PIECE!", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(act, "THE ONE PIECE IS REAL (CAN WE GET MUCH HIGHER)", Toast.LENGTH_SHORT).show();
 
                        List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
                        for (RVSubCategoryModel m : rvSubCategory1List) {
-                           System.out.println(m.getRecipeName());
-                           Toast.makeText(act, m.getRecipeName(), Toast.LENGTH_SHORT).show();
+                           String name = m.getRecipeName();
+                           String searchitem = search.getQuery().toString();
+                           System.out.println(searchitem);
+                           Toast.makeText(act, searchitem, Toast.LENGTH_SHORT).show();
 
-                           if(miniSearchEngine(search.toString(), m.getRecipeName())){
+                           if(searchitem.contains(name)){
                                rvSubCategoryNewList.add(m);
                                rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                               Toast.makeText(act, "Recipe found + UwU + blehhh", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(act, "Recipe found UwU", Toast.LENGTH_SHORT).show();
                            } else {
                                Toast.makeText(act, "Recipe not found. Please search for another recipe.", Toast.LENGTH_SHORT).show();
                            }
