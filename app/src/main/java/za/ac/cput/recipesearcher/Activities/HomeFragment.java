@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
                 Bundle savedInstanceState) {
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.fragment_home, container, false);
+            View otherview = inflater.inflate(R.layout.item_rv_main_category, container, false);
 
             act = this.getActivity();
 
@@ -145,34 +146,7 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                    TextView text = rv.findViewById(R.id.txt_category_name);
-                    String categoryname = text.getText().toString();
-                    Toast.makeText(act, categoryname, Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, categoryname);
-
-                    List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
-                    for (RVSubCategoryModel m : list) {
-                        if (m.getCategory().equals(categoryname)) {
-                            rvSubCategoryNewList.add(m);
-                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                            Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-
-                @Override
-                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-                }
-            });
-
-//            rvMainCategory.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    TextView text = view.findViewById(txt_category_name);
+//                    TextView text = otherview.findViewById(R.id.txt_category_name);
 //                    String categoryname = text.getText().toString();
 //                    Toast.makeText(act, categoryname, Toast.LENGTH_SHORT).show();
 //                    Log.i(TAG, categoryname);
@@ -188,8 +162,13 @@ public class HomeFragment extends Fragment {
 //                            Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
 //                        }
 //                    }
-//                }
-//            });
+                }
+
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                }
+            });
 
             //The mini-search engine for the home screen
             SearchView search = view.findViewById(R.id.search_view);
@@ -206,7 +185,7 @@ public class HomeFragment extends Fragment {
                            System.out.println(m.getRecipeName());
                            Toast.makeText(act, m.getRecipeName(), Toast.LENGTH_SHORT).show();
 
-                           if(miniSearchEngine(search.toString().trim(), m.getRecipeName())){
+                           if(miniSearchEngine(search.toString(), m.getRecipeName())){
                                rvSubCategoryNewList.add(m);
                                rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
