@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import za.ac.cput.recipesearcher.Entities.RVMainCategoryModel;
 import za.ac.cput.recipesearcher.Entities.RVSubCategoryModel;
 import za.ac.cput.recipesearcher.R;
 
@@ -33,7 +35,7 @@ public class RVSubCategoryAdapter extends RecyclerView.Adapter<RVSubCategoryAdap
 
     @Override
     public void onBindViewHolder(@NonNull RVSubCategoryAdapter.ViewHolder holder, int position) {
-        holder.img_recipe.setImageResource(list.get(position).getRecipeImage());
+        holder.img_recipe.setImageResource((int) list.get(position).getRecipeImage());
         holder.txt_recipe_name.setText(list.get(position).getRecipeName());
         holder.txt_bio.setText(list.get(position).getRecipeBio());
         holder.txt_estimated_time.setText(list.get(position).getRecipeEstimatedTime());
@@ -63,4 +65,5 @@ public class RVSubCategoryAdapter extends RecyclerView.Adapter<RVSubCategoryAdap
             txt_amount_of_calories = itemView.findViewById(R.id.txt_amountofcalories);
         }
     }
+
 }

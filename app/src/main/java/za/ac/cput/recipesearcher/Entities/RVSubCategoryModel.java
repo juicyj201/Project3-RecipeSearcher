@@ -2,7 +2,7 @@ package za.ac.cput.recipesearcher.Entities;
 
 public class RVSubCategoryModel {
 
-    int recipeImage;
+    long recipeImage;
     String recipeName;
     String recipeBio;
     String recipeEstimatedTime;
@@ -13,7 +13,7 @@ public class RVSubCategoryModel {
         //empty constructor
     }
 
-    public RVSubCategoryModel(int recipeImage, String recipeName, String recipeBio, String recipeEstimatedTime, String recipeAmountOfCalories, String category) {
+    public RVSubCategoryModel(long recipeImage, String recipeName, String recipeBio, String recipeEstimatedTime, String recipeAmountOfCalories, String category) {
         this.recipeImage = recipeImage;
         this.recipeName = recipeName;
         this.recipeBio = recipeBio;
@@ -29,11 +29,11 @@ public class RVSubCategoryModel {
         this.recipeAmountOfCalories = builder.recipeAmountOfCalories;
     }
 
-    public int getRecipeImage() {
+    public long getRecipeImage() {
         return recipeImage;
     }
 
-    public void setRecipeImage(int recipeImage) {
+    public void setRecipeImage(long recipeImage) {
         this.recipeImage = recipeImage;
     }
 
@@ -78,7 +78,7 @@ public class RVSubCategoryModel {
     }
 
     public static class RVSubCategoryModelBuilder {
-        public static int recipeImage;
+        public static long recipeImage;
         public static String recipeName;
         public static String recipeBio;
         public static String recipeEstimatedTime;
@@ -92,7 +92,7 @@ public class RVSubCategoryModel {
 //            this.recipeAmountOfCalories = recipeAmountOfCalories;
         }
 
-        public RVSubCategoryModelBuilder createImage(int recipeImage){
+        public RVSubCategoryModelBuilder createImage(long recipeImage){
             this.recipeImage = recipeImage;
             return this;
         }
