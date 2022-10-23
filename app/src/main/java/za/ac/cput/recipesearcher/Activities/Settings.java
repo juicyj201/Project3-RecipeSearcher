@@ -17,7 +17,6 @@ public class Settings extends AppCompatActivity {
 
     ImageButton imgButton_settingsBack;
     CardView cv_editprofile, cv_privacypolicy;
-    FragmentManager fragmentManager;
     String email, name;
 
     @Override
@@ -27,6 +26,7 @@ public class Settings extends AppCompatActivity {
 
         cv_editprofile = findViewById(R.id.cv_editprofile);
         cv_privacypolicy = findViewById(R.id.cv_privacypolicy);
+        imgButton_settingsBack = findViewById(R.id.imgbtn_back);
 
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
@@ -50,21 +50,13 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        //Initialize button
-//        imgButton_settingsBack = findViewById(R.id.imgbtn_back);
-//
-//        //Button Onclicks
-//        imgButton_settingsBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                fragmentManager = getSupportFragmentManager();
-//                ProfileFragment profileFragment = new ProfileFragment();
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.fragment_container, profileFragment)
-//                        .commit();
-//            }
-//        });
 
-
+        imgButton_settingsBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, ProfileFragment.class);
+                startActivity(intent);
+            }
+        });
     }
 }

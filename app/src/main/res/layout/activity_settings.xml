@@ -32,6 +32,8 @@
             android:id="@+id/imgbtn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/btn_back_orange"
             android:contentDescription="@string/back_button"

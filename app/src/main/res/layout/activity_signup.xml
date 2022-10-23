@@ -7,6 +7,21 @@
     android:background="@color/white"
     tools:context=".Activities.SignupActivity">
 
+    <ImageButton
+        android:id="@+id/imgbtn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_back_orange"
+        android:contentDescription="@string/back_button"
+        android:padding="13dp"
+        android:src="@drawable/icon_back_white"
+        app:layout_constraintEnd_toStartOf="@+id/zaGourmetLogo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/zaGourmetLogo"
         android:layout_width="183dp"
