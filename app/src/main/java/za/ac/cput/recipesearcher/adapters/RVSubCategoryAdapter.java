@@ -35,7 +35,7 @@ public class RVSubCategoryAdapter extends RecyclerView.Adapter<RVSubCategoryAdap
 
     @Override
     public void onBindViewHolder(@NonNull RVSubCategoryAdapter.ViewHolder holder, int position) {
-        holder.img_recipe.setImageResource(list.get(position).getRecipeImage());
+        holder.img_recipe.setImageResource((int) list.get(position).getRecipeImage());
         holder.txt_recipe_name.setText(list.get(position).getRecipeName());
         holder.txt_bio.setText(list.get(position).getRecipeBio());
         holder.txt_estimated_time.setText(list.get(position).getRecipeEstimatedTime());

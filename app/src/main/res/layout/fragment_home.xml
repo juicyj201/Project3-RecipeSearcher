@@ -9,10 +9,12 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,21 +43,35 @@
                     android:iconifiedByDefault="false"
                     android:queryBackground="@color/transparent"
                     android:queryHint="Search for recipes"
-                    android:theme="@style/ThemeOverlay.Search" />
+                    android:theme="@style/ThemeOverlay.Search">
+
+                </SearchView>
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_main_category"
+            <ScrollView
+                android:id="@+id/rv_main_category_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="10dp"
-                android:clickable="true"
-                android:onClick="onClick"
-                android:orientation="horizontal"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_rv_main_category" />
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:isScrollContainer="false"
+                android:scrollbarAlwaysDrawHorizontalTrack="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_main_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:onClick="onClick"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_rv_main_category" />
+                </LinearLayout>
+            </ScrollView>
 
             <TextView
                 android:id="@+id/txtCategory1"
@@ -96,4 +112,5 @@
                 tools:listitem="@layout/item_rv_sub_category" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>

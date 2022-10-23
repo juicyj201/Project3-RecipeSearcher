@@ -65,7 +65,6 @@ public class HomeFragment extends Fragment {
                 Bundle savedInstanceState) {
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.fragment_home, container, false);
-            View otherview = inflater.inflate(R.layout.item_rv_main_category, container, false);
 
             act = this.getActivity();
 
@@ -73,12 +72,6 @@ public class HomeFragment extends Fragment {
             rvMainCategory = view.findViewById(R.id.rv_main_category);
             rvMainCategoryList = new ArrayList<>();
 
-//            rvMainCategoryList.add(new RVMainCategoryModel(R.drawable.fire, "Breakfast"));
-//            rvMainCategoryList.add(new RVMainCategoryModel(R.drawable.fire, "Lunch"));
-//            rvMainCategoryList.add(new RVMainCategoryModel(R.drawable.fire, "Supper"));
-//            rvMainCategoryList.add(new RVMainCategoryModel(R.drawable.fire, "Dessert"));
-//            rvMainCategoryList.add(new RVMainCategoryModel(R.drawable.fire, "Beverages"));
-//            rvMainCategoryList.add(new RVMainCategoryModel(R.drawable.fire, "Beer"));=
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("category");
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -96,12 +89,11 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-            rvMainCategory.setLayoutManager(new LinearLayoutManager(rvMainCategory.getContext(), LinearLayoutManager.HORIZONTAL, false));
+            rvMainCategory.setLayoutManager(new LinearLayoutManager(rvMainCategory.getContext(), LinearLayoutManager.HORIZONTAL, true));
             rvMainCategory.setAdapter(new RVMainCategoryAdapter(getContext(), rvMainCategoryList));
             rvMainCategory.setHasFixedSize(true);
             rvMainCategory.setNestedScrollingEnabled(true);
-
-            rvMainCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+            rvMainCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, true));
 
             //Sub Recipe Category 1
             rvSub1Category = view.findViewById(R.id.rv_sub_category1);
@@ -114,55 +106,46 @@ public class HomeFragment extends Fragment {
             List<RVSubCategoryModel> list = new ArrayList<>();
 
             //Getting data from the realtime database
-//            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("recipe");
-//            ref2.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    for (DataSnapshot s : snapshot.getChildren()) {
-//                        RVSubCategoryModel r = s.getValue(RVSubCategoryModel.class);
-////                        System.out.println(s.getValue().toString());
-////                        Log.i(TAG, s.getValue().toString());
-//                        r.setRecipeImage(R.drawable.pexels_pixabay_315755);
-//                        rvSubCategory1List.add(r);
-//                        rvSubCategory2List.add(r);
-//                        list.add(r);
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Log.e(TAG, error.getMessage());
-//                }
-//            });
+            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("recipe");
+            ref2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot s : snapshot.getChildren()) {
+                        RVSubCategoryModel r = s.getValue(RVSubCategoryModel.class);
+                        r.setRecipeImage(R.drawable.pexels_pixabay_315755);
+                        rvSubCategory1List.add(r);
+                        rvSubCategory2List.add(r);
+                        list.add(r);
+                    }
+                }
 
-//            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Pizza", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Butter Chicken", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory1List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Cheese Burger", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e(TAG, error.getMessage());
+                }
+            });
+
             rvSub1Category.setLayoutManager(new LinearLayoutManager(rvSub1Category.getContext(), LinearLayoutManager.HORIZONTAL, false));
             rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategory1List));
             rvSub1Category.setHasFixedSize(true);
             rvSub1Category.setNestedScrollingEnabled(true);
-
             rvSub1Category.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-//            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Pizza", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Butter Chicken", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
-//            rvSubCategory2List.add(new RVSubCategoryModel(R.drawable.pexels_pixabay_315755, "Cheese Burger", "This recipe has been passed on by through generations.", "10min", "200kcal", "Supper"));
             rvSub2Category.setLayoutManager(new LinearLayoutManager(rvSub2Category.getContext(), LinearLayoutManager.HORIZONTAL, false));
             rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategory2List));
             rvSub2Category.setHasFixedSize(true);
             rvSub2Category.setNestedScrollingEnabled(true);
-
             rvSub2Category.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
-            rvMainCategory.setOnClickListener(new View.OnClickListener() {
+            rvMainCategory.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                 @Override
-                public void onClick(View view) {
-                    TextView text = otherview.findViewById(txt_category_name);
+                public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                    return false;
+                }
+
+                @Override
+                public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                    TextView text = rv.findViewById(R.id.txt_category_name);
                     String categoryname = text.getText().toString();
                     Toast.makeText(act, categoryname, Toast.LENGTH_SHORT).show();
                     Log.i(TAG, categoryname);
@@ -179,34 +162,32 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 }
+
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                }
             });
 
-            //Sort by category
-//            rvMainCategory.setOnTouchListener(new View.OnTouchListener() {
+//            rvMainCategory.setOnClickListener(new View.OnClickListener() {
 //                @Override
-//                public boolean onTouch(View view, MotionEvent motionEvent) {
-//                    CardView card = view.findViewById(R.id.item_rv_main_category_cardview);
-//                    TextView text = card.findViewById(txt_category_name);
+//                public void onClick(View view) {
+//                    TextView text = view.findViewById(txt_category_name);
 //                    String categoryname = text.getText().toString();
+//                    Toast.makeText(act, categoryname, Toast.LENGTH_SHORT).show();
+//                    Log.i(TAG, categoryname);
 //
-//                    view.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
-//                            for (RVSubCategoryModel m : list) {
-//                                if (m.getCategory().equals(categoryname)) {
-//                                    rvSubCategoryNewList.add(m);
-//                                    rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-//                                    rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-//                                    Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
-//                                } else {
-//                                    Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
+//                    List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
+//                    for (RVSubCategoryModel m : list) {
+//                        if (m.getCategory().equals(categoryname)) {
+//                            rvSubCategoryNewList.add(m);
+//                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+//                            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+//                            Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
 //                        }
-//                    });
-//
-//                    return true;
+//                    }
 //                }
 //            });
 
