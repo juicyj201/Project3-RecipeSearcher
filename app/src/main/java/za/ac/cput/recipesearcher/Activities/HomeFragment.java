@@ -162,8 +162,15 @@ public class HomeFragment extends Fragment {
                         for(TextView texts : views) {
                             if (m.getCategory().equals(texts.getText().toString())) {
                                 rvSubCategoryNewList.add(m);
-                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                                rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+//                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                                rvMainCategory.setAdapter(null);
+                                rvSub2Category.setAdapter(null);
+                                TextView breakfast = (TextView) view.findViewById(R.id.txtCategory1);
+                                breakfast.setText(null);
+                                TextView Lunch = (TextView) view.findViewById(R.id.txtCategory2);
+                                Lunch.setText(null);
+
                                 Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
@@ -178,7 +185,6 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-            //The mini-search engine for the home screen
             SearchView search = view.findViewById(R.id.search_view);
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -186,41 +192,34 @@ public class HomeFragment extends Fragment {
                    if(regexChecker(search.getQuery().toString())) {
                        Toast.makeText(act, "THE ONE PIECE!", Toast.LENGTH_SHORT).show();
                        Toast.makeText(act, "THE ONE PIECE IS REAL (CAN WE GET MUCH HIGHER)", Toast.LENGTH_SHORT).show();
+                       String searchitem = search.getQuery().toString();
 
                        List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
                        for (RVSubCategoryModel m : rvSubCategory1List) {
                            String name = m.getRecipeName();
-                           String searchitem = search.getQuery().toString();
-                           System.out.println(searchitem);
-                           Toast.makeText(act, searchitem, Toast.LENGTH_SHORT).show();
 
-                           if(searchitem.contains(name)){
+                           if(searchitem.contains(name) || name.contains(searchitem)){
                                rvSubCategoryNewList.add(m);
                                rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
                                rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
                                Toast.makeText(act, "Recipe found UwU", Toast.LENGTH_SHORT).show();
-                           } else {
-                               Toast.makeText(act, "Recipe not found. Please search for another recipe.", Toast.LENGTH_SHORT).show();
+                               break;
                            }
                        }
                    }
                 }
             });
 
+            rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategory1List));
+            rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategory2List));
+
             return view;
-    }
-    
-    private boolean miniSearchEngine(String searchitem, String recipename) {
-        //check if they match with each string in the array
-        if(!searchitem.contains(recipename))
-            return false;
-        return true;
     }
 
     private boolean regexChecker(String searchitem){
-        Pattern research = Pattern.compile("^([a-zA-Z& ]+)$", Pattern.CASE_INSENSITIVE);
+        Pattern research = Pattern.compile("^([a-zA-Z ]+)$", Pattern.CASE_INSENSITIVE);
         Matcher searchm = research.matcher(searchitem);
-        if (!searchm.find()){
+        if (searchm.find()){
             return true;
         }else{
             Toast.makeText(act, "‘Sup guys, My name is Quandale Dingle. I am breaking out of prison on may 14, 2023. I am currently imprisoned in southern Saudi Arabia for various felonies", Toast.LENGTH_SHORT).show();
