@@ -44,7 +44,7 @@ public class GetStartedWelcome1Activity extends AppCompatActivity {
         txtNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GetStartedWelcome1Activity.this, GetStartedWelcome2Activity.class));
+                startActivity(new Intent(GetStartedWelcome1Activity.this, LoginActivity.class));
             }
         });
     }

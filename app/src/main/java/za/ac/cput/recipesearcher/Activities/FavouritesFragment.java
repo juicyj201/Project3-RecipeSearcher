@@ -53,30 +53,12 @@ public class FavouritesFragment extends Fragment {
 
         rvMainCategoryList_favourites = new ArrayList<>();
 
-        //Getting data from the realtime database
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("category");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot s : snapshot.getChildren()) {
-                    RVMainCategoryModel m = s.getValue(RVMainCategoryModel.class);
-                    m.setCategoryIcon(R.drawable.fire);
-                    rvMainCategoryList_favourites.add(m);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG, error.getMessage());
-            }
-        });
-
-//        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Breakfast"));
-//        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Lunch"));
-//        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Supper"));
-//        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Dessert"));
-//        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Beverages"));
-//        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Beer"));
+        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Breakfast"));
+        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Lunch"));
+        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Supper"));
+        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Dessert"));
+        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Beverages"));
+        rvMainCategoryList_favourites.add(new RVMainCategoryModel(R.drawable.fire, "Beer"));
 
         rvMainCategory_favourites.setLayoutManager(new LinearLayoutManager(rvMainCategory_favourites.getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvMainCategory_favourites.setAdapter(new RVMainCategoryAdapter(getContext(), rvMainCategoryList_favourites));
@@ -90,29 +72,11 @@ public class FavouritesFragment extends Fragment {
 
         rvSubCategoryList_favourites = new ArrayList<>();
 
-        //Getting data from the realtime database
-        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("recipe");
-        ref2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot s : snapshot.getChildren()) {
-                    RVSubCategoryModel_Favourites r = s.getValue(RVSubCategoryModel_Favourites.class);
-                    r.setRecipeImage(R.drawable.pexels_pixabay_315755);
-                    rvSubCategoryList_favourites.add(r);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG, error.getMessage());
-            }
-        });
-
-//        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
-//        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal"));
-//        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Pizza", "This recipe has been passed on by through generations.", "10min", "200kcal"));
-//        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Butter Chicken", "This recipe has been passed on by through generations.", "10min", "200kcal"));
-//        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Cheese Burger", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Macaronni & Cheese", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Spaghetti", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Pizza", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Butter Chicken", "This recipe has been passed on by through generations.", "10min", "200kcal"));
+        rvSubCategoryList_favourites.add(new RVSubCategoryModel_Favourites(R.drawable.pexels_pixabay_315755, "Cheese Burger", "This recipe has been passed on by through generations.", "10min", "200kcal"));
 
         rvSubCategory_favourites.setLayoutManager(new LinearLayoutManager(rvSubCategory_favourites.getContext(), LinearLayoutManager.VERTICAL, false));
         rvSubCategory_favourites.setAdapter(new RVSubCategoryAdapter_Favourites(getContext(), rvSubCategoryList_favourites));

@@ -76,10 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot s : snapshot.getChildren()) {
                             Profile p = s.getValue(Profile.class);
-                            System.out.println(s.getValue());
-                            Log.i(TAG, s.getValue().toString());
                             if (p.getEmail().equals(email)) {
-                                Log.i(TAG, "Least the emails work");
+                                Log.i(TAG, p.toString());
+                                Log.i(TAG, "That email has been found");
 
                                 if (regexValidation(email, password)) {
                                     signIn(email, password);
@@ -127,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Sign in with JONG CENA, success.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Sign in, success.", Toast.LENGTH_SHORT).show();
 
                             Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
                             homeIntent.putExtra("email", email);
@@ -137,10 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             String e = String.valueOf(task.getException());
                             Log.i(TAG, e);
-                            Toast.makeText(LoginActivity.this, e, Toast.LENGTH_SHORT).show();
-                            Toast.makeText(LoginActivity.this, "L + bozo + email = weak", Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                            //TODO error activity or toast will be implementted
                         }
                     }
                 });
@@ -154,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Popup window
                 final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
                 passwordResetDialog.setTitle("Reset Password?");
-                passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
+                passwordResetDialog.setMessage("Enter your Email to receive reset link.");
                 passwordResetDialog.setView(resetEmail);
 
                 passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -166,12 +162,12 @@ public class LoginActivity extends AppCompatActivity {
                         auth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(LoginActivity.this, "Reset Link Send to Your Email.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Reset Link has been sent to Your Email.", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Error! Reset Link Not Sent. " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Error! Reset link has not been sent." + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

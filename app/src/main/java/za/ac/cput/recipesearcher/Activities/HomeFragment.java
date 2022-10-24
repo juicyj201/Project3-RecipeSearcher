@@ -5,6 +5,7 @@ import static za.ac.cput.recipesearcher.R.id.txt_category_name;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.LauncherActivity;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -73,6 +74,7 @@ public class HomeFragment extends Fragment {
             rvMainCategory = view.findViewById(R.id.rv_main_category);
             rvMainCategoryList = new ArrayList<>();
 
+            //getting the categories from the real time database
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("category");
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -106,7 +108,7 @@ public class HomeFragment extends Fragment {
 
             List<RVSubCategoryModel> list = new ArrayList<>();
 
-            //Getting data from the realtime database
+            //Getting all recipes from the realtime database
             DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("recipe");
             ref2.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -152,11 +154,6 @@ public class HomeFragment extends Fragment {
                         views.add((TextView) rv.getLayoutManager().getChildAt(i));
                     }
 
-//                    TextView text = otherview.findViewById(R.id.txt_category_name);
-//                    String categoryname = text.getText().toString();
-//                    Toast.makeText(act, categoryname, Toast.LENGTH_SHORT).show();
-//                    Log.i(TAG, categoryname);
-
                     List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
                     for (RVSubCategoryModel m : list) {
                         for(TextView texts : views) {
@@ -170,8 +167,6 @@ public class HomeFragment extends Fragment {
                                 breakfast.setText(null);
                                 TextView Lunch = (TextView) view.findViewById(R.id.txtCategory2);
                                 Lunch.setText(null);
-
-                                Toast.makeText(act, "This main category stuff is working", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(act, "Category not found. Please choose another category.", Toast.LENGTH_SHORT).show();
                             }
@@ -189,24 +184,24 @@ public class HomeFragment extends Fragment {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   if(regexChecker(search.getQuery().toString())) {
-                       Toast.makeText(act, "THE ONE PIECE!", Toast.LENGTH_SHORT).show();
-                       Toast.makeText(act, "THE ONE PIECE IS REAL (CAN WE GET MUCH HIGHER)", Toast.LENGTH_SHORT).show();
-                       String searchitem = search.getQuery().toString();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                        if(regexChecker(search.getQuery().toString())) {
+                            String searchitem = search.getQuery().toString();
 
-                       List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
-                       for (RVSubCategoryModel m : rvSubCategory1List) {
-                           String name = m.getRecipeName();
+                            List<RVSubCategoryModel> rvSubCategoryNewList = new ArrayList<>();
+                            for (RVSubCategoryModel m : rvSubCategory1List) {
+                                String name = m.getRecipeName();
 
-                           if(searchitem.contains(name) || name.contains(searchitem)){
-                               rvSubCategoryNewList.add(m);
-                               rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                               rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
-                               Toast.makeText(act, "Recipe found UwU", Toast.LENGTH_SHORT).show();
-                               break;
-                           }
-                       }
-                   }
+                                if(searchitem.contains(name) || name.contains(searchitem)){
+                                    rvSubCategoryNewList.add(m);
+                                    rvSub1Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                                    rvSub2Category.setAdapter(new RVSubCategoryAdapter(getContext(), rvSubCategoryNewList));
+                                    Toast.makeText(act, "Recipe found.", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
             });
 
@@ -222,7 +217,7 @@ public class HomeFragment extends Fragment {
         if (searchm.find()){
             return true;
         }else{
-            Toast.makeText(act, "‘Sup guys, My name is Quandale Dingle. I am breaking out of prison on may 14, 2023. I am currently imprisoned in southern Saudi Arabia for various felonies", Toast.LENGTH_SHORT).show();
+            Toast.makeText(act, "Search item contains non-letter characters. Please try again.", Toast.LENGTH_SHORT).show();
             return false;
         }
     }

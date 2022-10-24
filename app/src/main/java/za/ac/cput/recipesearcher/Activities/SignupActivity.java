@@ -45,7 +45,6 @@ public class SignupActivity extends AppCompatActivity {
    private CheckBox cbxNoties;
    private FirebaseAuth auth;
 
-   //TODO - Create profile-type object that saves the first name and surname to the profile
    private ProfileRepositoryImpl profilerepo = new ProfileRepositoryImpl();
 
    private static final String TAG = "SignUpActivity";
@@ -86,7 +85,7 @@ public class SignupActivity extends AppCompatActivity {
                if(regexValidation(email, password) && cbxNoties.isChecked()){
                    signUp(email, password);
                }else{
-                   Toast.makeText(SignupActivity.this, "The user input is not correct and cboxNoties has not been checked.", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SignupActivity.this, "The user input is not correct and the notification box has not been checked.", Toast.LENGTH_SHORT).show();
                }
            }
        });
@@ -118,14 +117,12 @@ public class SignupActivity extends AppCompatActivity {
                    @Override
                    public void onComplete(@NonNull Task<AuthResult> task) {
                        if (task.isSuccessful()) {
-                           Toast.makeText(SignupActivity.this, "Sign up with JONG CENA, success.", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(SignupActivity.this, "Sign up, success.", Toast.LENGTH_SHORT).show();
                            //Toast.makeText(SignupActivity.this, "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                        } else {
                            String e = String.valueOf(task.getException());
-                           Toast.makeText(SignupActivity.this, e, Toast.LENGTH_SHORT).show();
-                           Toast.makeText(SignupActivity.this, "AMOGUS", Toast.LENGTH_SHORT).show();
-                           Toast.makeText(SignupActivity.this, "SUS", Toast.LENGTH_SHORT).show();
+                           Log.e(TAG, e);
                            Toast.makeText(SignupActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                        }
                    }
