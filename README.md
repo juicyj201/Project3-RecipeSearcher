@@ -11,8 +11,9 @@ Thank you for using this app 🙂
 
 ## How to install
 
-1. Download the apk package ```RecipeSearcher``` and install on your android device.
-2. If prompted for permission to allow installation from outside parties, select 'Allow'
+1. To find the app go to the [apk bundle](https://github.com/juicyj201/Project3-RecipeSearcher/releases/tag/v1.0.0).
+2. Download the apk package ```RecipeSearcher``` and install on your android device.
+3. If prompted for permission to allow installation from outside parties, select 'Allow'
 
 ## How to run
 
